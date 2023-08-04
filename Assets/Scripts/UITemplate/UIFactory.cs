@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using DefaultNamespace;
 using Resource;
 using UITemplate;
 using UnityEngine;

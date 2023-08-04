@@ -56,7 +56,8 @@ namespace Services
         private async Task SpawnEnemy()
         {
             var pointIndex = Random.Range(0, _spawnPoints.Length);
-            var enemy = await _factory.Create(_enemyPath, _spawnPoints[pointIndex].transform.position);
+            var enemy = await _factory.Create(CharacterType.Enemy, _enemyPath,
+                _spawnPoints[pointIndex].transform.position);
             Events.EventBus.RaiseEvent<ISpawnCharacterHandler>(h => h.HandleSpawnEnemy(enemy));
         }
 

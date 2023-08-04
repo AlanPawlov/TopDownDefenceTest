@@ -489,6 +489,7 @@ MonoBehaviour:
   - {fileID: 1336647038}
   - {fileID: 1581927286}
   _playerSpawnPoint: {fileID: 1267659003}
+  _wall: {fileID: 1907687548}
 --- !u!114 &767984230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,7 +1128,8 @@ GameObject:
   - component: {fileID: 1907687547}
   - component: {fileID: 1907687546}
   - component: {fileID: 1907687545}
-  m_Layer: 0
+  - component: {fileID: 1907687548}
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1246,6 +1248,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1907687548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907687544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71cc93c5bad26c94598057c42dc7149e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2114621462 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 827986341844108643, guid: c10be675721a3274d90445710105190e, type: 3}

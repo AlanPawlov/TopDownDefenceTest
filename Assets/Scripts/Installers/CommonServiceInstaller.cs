@@ -1,5 +1,4 @@
-﻿using DefaultNamespace;
-using Resource;
+﻿using Resource;
 using Services;
 using UnityEngine;
 using Zenject;
