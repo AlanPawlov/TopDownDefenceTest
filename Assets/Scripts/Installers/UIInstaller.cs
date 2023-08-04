@@ -1,56 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-public class UIInstaller : MonoInstaller
+namespace Installers
 {
-    [SerializeField] private int NextSceneIndex = 1;
-    [SerializeField] private MainCanvas _globalCanvas;
-
-    public override void InstallBindings()
+    public class UIInstaller : MonoInstaller
     {
-        InstallMainCanvas();
-        InstallUIManager();
-        InstallUIPool();
-        InstallUIFactory();
-        SceneManager.LoadScene(NextSceneIndex);
-    }
+        [SerializeField] private int NextSceneIndex = 1;
+        [SerializeField] private MainCanvas _globalCanvas;
 
-    private void InstallMainCanvas()
-    {
-        Container.Bind<MainCanvas>()
-            .FromComponentInNewPrefab(_globalCanvas)
-            .AsSingle();
-    }
+        public override void InstallBindings()
+        {
+            InstallMainCanvas();
+            InstallUIManager();
+            InstallUIPool();
+            InstallUIFactory();
+            SceneManager.LoadScene(NextSceneIndex);
+        }
 
-    private void InstallUIManager()
-    {
-        Container
-            .Bind<UIManager>()
-            .FromNew()
-            .AsSingle()
-            .NonLazy();
-    }
+        private void InstallMainCanvas()
+        {
+            Container.Bind<MainCanvas>()
+                .FromComponentInNewPrefab(_globalCanvas)
+                .AsSingle();
+        }
 
-    private void InstallUIPool()
-    {
-        Container
-            .Bind<UIElementPool>()
-            .FromNew()
-            .AsSingle()
-            .NonLazy();
-    }
+        private void InstallUIManager()
+        {
+            Container
+                .Bind<UIManager>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
 
-    private void InstallUIFactory()
-    {
-        Container
-            .Bind<UIFactory>()
-            .FromNew()
-            .AsSingle()
-            .NonLazy();
-    }
+        private void InstallUIPool()
+        {
+            Container
+                .Bind<UIElementPool>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
 
+        private void InstallUIFactory()
+        {
+            Container
+                .Bind<UIFactory>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
+    }
 }

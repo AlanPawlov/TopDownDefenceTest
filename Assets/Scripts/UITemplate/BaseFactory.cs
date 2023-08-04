@@ -1,19 +1,27 @@
+using System.Threading.Tasks;
+using Resource;
 using UnityEngine;
 using Zenject;
 
-public abstract class BaseFactory<T> where T : Object
+namespace UITemplate
 {
-    protected readonly DiContainer _diContainer;
-
-    protected BaseFactory(DiContainer diContainer)
+    public abstract class BaseFactory<T> where T : Object
     {
-        _diContainer = diContainer;
-    }
+        protected DiContainer _diContainer;
+        protected IResourceLoader _resourceLoader;
 
-    public virtual T Create(T prefab, Vector3 position = new Vector3(),Quaternion rotation = new Quaternion())
-    {
-        var obj = Object.Instantiate(prefab, position, rotation);
-        _diContainer.Inject(obj);
-        return obj;
+        protected BaseFactory(DiContainer diContainer, IResourceLoader resourceLoader)
+        {
+            _diContainer = diContainer;
+            _resourceLoader = resourceLoader;
+        }
+
+        public virtual async Task<T> Create(string resource, Vector3 position = new Vector3(),
+            Quaternion rotation = new Quaternion())
+        {
+            var obj = await _resourceLoader.Load<T>(resource);
+            _diContainer.Inject(obj);
+            return obj;
+        }
     }
 }
