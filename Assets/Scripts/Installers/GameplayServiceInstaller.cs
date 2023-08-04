@@ -17,6 +17,8 @@ namespace Installers
             BindPlayerMovement();
             BindPlayerSpawner();
             BindCharacterFactory();
+            BindEnemySpawner();
+            BindEnemyMovement();
         }
 
         private void BindPlayerSpawnPoint()
@@ -49,6 +51,24 @@ namespace Installers
         {
             Container
                 .Bind<PlayerSpawner>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindEnemyMovement()
+        {
+            Container
+                .Bind<EnemyMovementService>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindEnemySpawner()
+        {
+            Container
+                .Bind<EnemySpawner>()
                 .FromNew()
                 .AsSingle()
                 .NonLazy();
