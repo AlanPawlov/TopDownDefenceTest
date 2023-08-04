@@ -17,6 +17,7 @@ namespace Factories
         public override async Task<Projectile> Create(string resource, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
             var result = await base.Create(resource, position, rotation);
+            result.ResourceName = resource;
             var transform = result.transform;
             transform.position = position;
             transform.rotation = rotation;

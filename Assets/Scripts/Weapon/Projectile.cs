@@ -1,15 +1,30 @@
+using System.Threading.Tasks;
+using Events;
+using Events.Handlers;
 using Interfaces;
+using UI;
 using UnityEngine;
 
 namespace Weapon
-{ 
-    public class Projectile : MonoBehaviour
+{
+    public class Projectile : MonoBehaviour, IPoolable
     {
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private float Speed;
         [SerializeField] private int Damage;
         [SerializeField] private bool _isAlive;
         private Collider2D _ownerCollider;
+        public Transform Transform => transform;
+        public string ResourceName { get; set; }
+
+        public async Task Init()
+        {
+        }
+
+        public void Uninit()
+        {
+        }
+
 
         public void Setup(int damage, float speed, Character character)
         {
@@ -38,7 +53,8 @@ namespace Weapon
             {
                 target.ApplyDamage(Damage);
                 _isAlive = false;
-                Destroy(gameObject);
+                Uninit();
+                EventBus.RaiseEvent<IProjectileDeathHandler>(h => h.HandleProjectileDeath(this));
             }
         }
     }
