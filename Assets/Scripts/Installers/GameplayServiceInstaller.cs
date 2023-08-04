@@ -9,16 +9,21 @@ namespace Installers
     {
         [SerializeField] private EnemySpawnPoint[] _enemySpawnPoint;
         [SerializeField] private PlayerSpawnPoint _playerSpawnPoint;
-
+        [SerializeField] private Wall _wall;
+        
         public override void InstallBindings()
         {
+            BindWall();
             BindPlayerSpawnPoint();
             BindEnemySpawnPoints();
             BindPlayerMovement();
-            BindPlayerSpawner();
             BindCharacterFactory();
             BindEnemySpawner();
             BindEnemyMovement();
+            BindPlayerAttack();
+            BindEnemyAttack();
+            BindProjectileFactory();
+            BindPlayerSpawner();
         }
 
         private void BindPlayerSpawnPoint()
@@ -26,6 +31,14 @@ namespace Installers
             Container
                 .Bind<PlayerSpawnPoint>()
                 .FromInstance(_playerSpawnPoint)
+                .AsSingle();
+        }
+
+        private void BindWall()
+        {
+            Container
+                .Bind<Wall>()
+                .FromInstance(_wall)
                 .AsSingle();
         }
 
@@ -63,6 +76,32 @@ namespace Installers
                 .FromNew()
                 .AsSingle()
                 .NonLazy();
+        }
+
+        private void BindPlayerAttack()
+        {
+            Container
+                .Bind<PlayerAttackService>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
+        
+        private void BindEnemyAttack()
+        {
+            Container
+                .Bind<EnemyAttackService>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindProjectileFactory()
+        {
+            Container
+                .Bind<ProjectileFactory>()
+                .FromNew()
+                .AsSingle();
         }
 
         private void BindEnemySpawner()

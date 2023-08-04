@@ -20,7 +20,7 @@ namespace Services
 
         public async Task Spawn()
         {
-            var player = await _factory.Create(_playerPath, _playerSpawnPoint.transform.position,
+            var player = await _factory.Create(CharacterType.Player,_playerPath, _playerSpawnPoint.transform.position,
                 Quaternion.identity);
             Events.EventBus.RaiseEvent<ISpawnCharacterHandler>(h => h.HandleSpawnPlayer(player));
         }
