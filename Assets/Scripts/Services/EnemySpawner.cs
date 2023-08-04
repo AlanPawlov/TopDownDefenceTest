@@ -2,6 +2,8 @@ using System;
 using System.Threading.Tasks;
 using Events.Handlers;
 using Factories;
+using Pools;
+using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,14 +21,16 @@ namespace Services
         private bool _isWork;
 
         private CharacterFactory _factory;
+        private CharacterPool _pool;
         private EnemySpawnPoint[] _spawnPoints;
         private UpdateSender _updateSender;
         private string _enemyPath = "Prefabs/Player";
 
-        public EnemySpawner(UpdateSender updateSender, CharacterFactory factory, EnemySpawnPoint[] spawnPoints)
+        public EnemySpawner(UpdateSender updateSender, CharacterFactory factory,CharacterPool characterPool, EnemySpawnPoint[] spawnPoints)
         {
             _updateSender = updateSender;
             _factory = factory;
+            _pool = characterPool;
             _spawnPoints = spawnPoints;
             _updateSender.OnUpdate += OnUpdate;
             _isWork = true;
@@ -56,7 +60,10 @@ namespace Services
         private async Task SpawnEnemy()
         {
             var pointIndex = Random.Range(0, _spawnPoints.Length);
-            var enemy = await _factory.Create(CharacterType.Enemy, _enemyPath,
+            var enemy = _pool.LoadFromPool<Character>(_enemyPath, _spawnPoints[pointIndex].transform.position,
+                Quaternion.identity);
+            if (enemy == null)
+            enemy = await _factory.Create(CharacterType.Enemy, _enemyPath,
                 _spawnPoints[pointIndex].transform.position);
             Events.EventBus.RaiseEvent<ISpawnCharacterHandler>(h => h.HandleSpawnEnemy(enemy));
         }

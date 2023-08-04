@@ -1,5 +1,7 @@
 ﻿using Factories;
 using Interfaces;
+using Pools;
+using UI;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +12,8 @@ namespace Weapon
         private float cooldownTime = 1.2f;
         private float cooldownTimer;
         [Inject] private ProjectileFactory _factory;
+        [Inject] private ProjectilePool _pool;
+        private string _bulletPath = "Prefabs/Bullet";
 
         public ProjectileWeapon(Character owner) : base(owner)
         {
@@ -34,8 +38,11 @@ namespace Weapon
             var ownerPosition = _owner.GetPosition();
             var direction = (target.GetPosition() - ownerPosition).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            var bullet = await _factory.Create("Prefabs/Bullet", _owner.GetPosition(),
+            var bullet = (Projectile)_pool.LoadFromPool<Projectile>(_bulletPath, _owner.GetPosition(),
                 Quaternion.Euler(0.0f, 0.0f, angle));
+            if (bullet == null)
+                bullet = await _factory.Create(_bulletPath, _owner.GetPosition(),
+                    Quaternion.Euler(0.0f, 0.0f, angle));
             bullet.Setup(1, 2.5f, _owner);
         }
     }

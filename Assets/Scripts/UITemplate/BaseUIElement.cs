@@ -6,16 +6,18 @@ using Zenject;
 
 namespace UI
 {
-    public class BaseUIElement : MonoBehaviour
+    public class BaseUIElement : MonoBehaviour, IPoolable
     {
         private List<BaseUIElement> _childUIElements;
         private RectTransform _rectTransform;
         private InterfaceWindow _parentWindow;
         protected UIManager _uiManager;
 
-        public string ResourceName;
         public bool IsDirectChild;
         public bool Active { get; set; }
+        public Transform Transform => _rectTransform;
+        public string ResourceName { get; set; }
+
 
         public RectTransform RectTransform
         {
@@ -61,6 +63,7 @@ namespace UI
             }
         }
 
+
         protected void RemoveChild<T>(T child) where T : BaseUIElement
         {
             if (child == null)
@@ -87,7 +90,7 @@ namespace UI
             }
 
             Active = false;
-            
+
             try
             {
                 foreach (var child in _childUIElements)

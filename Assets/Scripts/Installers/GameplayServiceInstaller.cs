@@ -1,5 +1,7 @@
 using Factories;
+using Pools;
 using Services;
+using UI;
 using UnityEngine;
 using Zenject;
 
@@ -24,6 +26,8 @@ namespace Installers
             BindEnemyAttack();
             BindProjectileFactory();
             BindPlayerSpawner();
+            BindCharacterPool();
+            BindProjectilePool();
         }
 
         private void BindPlayerSpawnPoint()
@@ -120,5 +124,22 @@ namespace Installers
                 .FromNew()
                 .AsSingle();
         }
+        
+        private void BindProjectilePool()
+        {
+            Container
+                .Bind<ProjectilePool>()
+                .FromNew()
+                .AsSingle();
+        }
+
+        private void BindCharacterPool()
+        {
+            Container
+                .Bind<CharacterPool>()
+                .FromNew()
+                .AsSingle();
+        }
+
     }
 }

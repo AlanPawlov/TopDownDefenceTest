@@ -1,10 +1,12 @@
+using System.Threading.Tasks;
 using Events.Handlers;
 using Interfaces;
 using Services;
 using UnityEngine;
 using Zenject;
+using IPoolable = UI.IPoolable;
 
-public class Character : MonoBehaviour, IDamageable, IMovable, IAttackable
+public class Character : MonoBehaviour, IDamageable, IMovable, IAttackable, IPoolable
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     private int _health;
@@ -15,7 +17,10 @@ public class Character : MonoBehaviour, IDamageable, IMovable, IAttackable
     public bool CanWalk => _canWalk;
     public float Speed => _speed;
     public IWeapon Weapon => _weapon;
+    public Transform Transform => transform;
+    public string ResourceName { get; set; }
     [Inject] private UpdateSender _updateSender;
+
 
     public void Setup(IWeapon weapon)
     {
@@ -42,7 +47,7 @@ public class Character : MonoBehaviour, IDamageable, IMovable, IAttackable
         _health = 0;
         _updateSender.OnUpdate -= OnUpdate;
         Events.EventBus.RaiseEvent<IDeathHandler>(h => h.HandleDeath(this));
-        Destroy(gameObject);
+        Uninit();
     }
 
     public Vector3 GetPosition()
@@ -55,8 +60,17 @@ public class Character : MonoBehaviour, IDamageable, IMovable, IAttackable
         _rigidbody.velocity = direction * _speed;
     }
 
+
     public void Attack(IDamageable target)
     {
         _weapon.Attack(target);
+    }
+
+    public async Task Init()
+    {
+    }
+
+    public void Uninit()
+    {
     }
 }

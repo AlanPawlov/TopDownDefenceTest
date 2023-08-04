@@ -1,58 +1,20 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 namespace UI
 {
-    public class UIElementPool : IDisposable
+    public class UIElementPool : BasePool
     {
-        private readonly DiContainer _container;
-        private Dictionary<string, List<BaseUIElement>> _pool;
-        private Transform _poolHolder;
-
-        public Transform PoolHolder
+        public UIElementPool(DiContainer container) : base(container)
         {
-            get
-            {
-                if (_poolHolder == null)
-                {
-                    var newGo = new GameObject();
-                    newGo.name = "PoolHolder";
-                    newGo.SetActive(false);
-                    newGo.transform.position = Vector3.back * 1000;
-                    _poolHolder = newGo.transform;
-                }
-
-                return _poolHolder;
-            }
         }
 
-        public UIElementPool(DiContainer container)
+        public override IPoolable LoadFromPool<T>(string resourceName, Transform parent)
         {
-            _container = container;
-            _pool = new Dictionary<string, List<BaseUIElement>>();
-        }
+            BaseUIElement obj = (BaseUIElement)base.LoadFromPool<T>(resourceName, parent);
 
-        public BaseUIElement LoadFromPool<T>(string resourceName, Transform parent) where T : BaseUIElement
-        {
-            BaseUIElement obj = null;
-            if (_pool.TryGetValue(resourceName, out var list))
+            if (obj != null)
             {
-                if (list.Count > 0)
-                {
-                    var index = list.Count - 1;
-                    obj = list[index];
-                    list.RemoveAt(index);
-                    obj.transform.SetParent(parent);
-                    obj.gameObject.SetActive(true);
-
-                    if (obj.gameObject == null)
-                        Debug.LogError($"{resourceName} GO is null");
-                }
-                else
-                    return null;
-                
                 //TODO:Почему то здесь не падает исключение, потом прийти и разобраться
                 obj.ResetParentWindow();
                 var transform = obj.transform;
@@ -63,33 +25,9 @@ namespace UI
                 {
                     obj.RectTransform.sizeDelta = Vector2.zero;
                 }
-
-                _container.Inject(obj);
             }
 
             return obj;
-        }
-
-        public void RemoveToPool(BaseUIElement element)
-        {
-            if (!_pool.TryGetValue(element.ResourceName, out var list))
-            {
-                list = new List<BaseUIElement>();
-                _pool.Add(element.ResourceName, list);
-            }
-
-            list.Add(element);
-            element.transform.SetParent(PoolHolder);
-        }
-
-        public void Clear()
-        {
-            _pool.Clear();
-        }
-
-        public void Dispose()
-        {
-            Clear();
         }
     }
 }
