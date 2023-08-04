@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using DefaultNamespace;
 using Resource;
+using UITemplate;
 using UnityEngine;
 using Zenject;
 
@@ -8,11 +9,8 @@ namespace UI
 {
     public class UIFactory : BaseFactory<BaseUIElement>
     {
-        private readonly IResourceLoader _resourceLoader;
-
-        public UIFactory(DiContainer diContainer, IResourceLoader resourceLoader) : base(diContainer)
+        public UIFactory(DiContainer diContainer, IResourceLoader resourceLoader) : base(diContainer, resourceLoader)
         {
-            _resourceLoader = resourceLoader;
         }
 
         public async Task<T> Create<T>(string resourceName, Transform parent) where T : BaseUIElement

@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable, IMovable
 {
+    [SerializeField] private Rigidbody2D _rigidbody;
     private int _health;
-    private float _speed;
+    private float _speed = 2.5f;
     private bool _canWalk;
     public int Health => _health;
     public bool CanWalk => _canWalk;
@@ -22,6 +23,6 @@ public class Character : MonoBehaviour, IDamageable, IMovable
 
     public void Move(Vector2 direction)
     {
-        throw new System.NotImplementedException();
+        _rigidbody.velocity = direction * _speed;
     }
 }
