@@ -24,10 +24,6 @@ namespace Services
         {
             _playerSpawner.Kill();
             _enemySpawner.KillAll();
-            var endGameWindow =
-                await _uiManager.CreateWindow<EndMatchWindow>(UIResourceMap.WindowMap.EndGame,
-                    WindowBehavior.Exclusive);
-            endGameWindow.SetData(true);
         }
 
         public override void StopState()

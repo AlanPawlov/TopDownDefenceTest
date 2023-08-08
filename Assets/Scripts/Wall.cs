@@ -1,29 +1,60 @@
+using System;
+using System.Collections.Generic;
+using Events;
 using Events.Handlers;
 using Interfaces;
+using Models;
+using SO;
 using UnityEngine;
+using Zenject;
 
-public class Wall : MonoBehaviour, IDamageable
+public class Wall : MonoBehaviour, IDamageable, IRestartMatchHandler
 {
-    private int _health = 5;
-    public int Health => _health;
+    private string _id;
+    private int _maxHealth;
+    private int _curHealth;
+    public int Health => _curHealth;
+
+    [Inject]
+    public void Construct(Dictionary<string, WallModel> wallModels, GameSetting setting)
+    {
+        _id = setting.WallId;
+        _maxHealth = wallModels[_id].Health;
+        _curHealth = _maxHealth;
+    }
+
+    private void Awake()
+    {
+        EventBus.Subscribe(this);
+    }
 
     public void ApplyDamage(int damage)
     {
-        _health -= damage;
-        if (_health <= 0)
+        _curHealth -= damage;
+        EventBus.RaiseEvent<IWallDamageHandler>(h => h.HandleWallDamage(_curHealth));
+        if (_curHealth <= 0)
         {
             Death();
-            Events.EventBus.RaiseEvent<IWallDestroyedHandler>(h => h.HandleWallDestroyed());
         }
     }
 
     public void Death()
     {
-        Debug.Log("END GAME");
+        EventBus.RaiseEvent<IWallDestroyedHandler>(h => h.HandleWallDestroyed());
     }
 
     public Vector3 GetPosition()
     {
         return transform.position;
+    }
+
+    public void HandleRestart()
+    {
+        _curHealth = _maxHealth;
+    }
+
+    private void OnDestroy()
+    {
+        EventBus.Unsubscribe(this);
     }
 }
