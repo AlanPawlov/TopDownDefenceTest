@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Events.Handlers;
 using Interfaces;
+using Models;
 using Services;
 using UnityEngine;
 using Zenject;
@@ -22,8 +23,10 @@ public class Character : MonoBehaviour, IDamageable, IMovable, IAttackable, IPoo
     [Inject] private UpdateSender _updateSender;
 
 
-    public void Setup(IWeapon weapon)
+    public void Setup(IWeapon weapon, CharacterModel model)
     {
+        _health = model.Health;
+        _speed = Random.Range(model.MinSpeed, model.MaxSpeed);
         _weapon = weapon;
         _updateSender.OnUpdate += OnUpdate;
     }

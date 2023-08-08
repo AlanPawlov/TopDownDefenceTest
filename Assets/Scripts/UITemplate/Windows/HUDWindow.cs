@@ -13,7 +13,6 @@ namespace UI.Windows
         private LabelWidget _healthCounter;
         private LabelWidget _enemyCounter;
         private int _remainingEnemies = 5;
-        private int _maxEnemies = 5;
 
         public override async Task Init()
         {
@@ -25,15 +24,21 @@ namespace UI.Windows
             EventBus.Subscribe(this);
         }
 
+        public void SetData(int targetKill, int wallHealth)
+        {
+            _remainingEnemies = targetKill;
+            UpdateEnemyCounter(targetKill);
+            UpdateHealthCounter(wallHealth);
+        }
+
         private void UpdateHealthCounter(int health)
         {
             _healthCounter?.SetData($"Health:{health}");
         }
 
-        private void UpdateEnemyCounter()
+        private void UpdateEnemyCounter(int remainingEnemies)
         {
-            _remainingEnemies--;
-            _enemyCounter?.SetData($"Enemies:{_remainingEnemies}");
+            _enemyCounter?.SetData($"Enemies:{remainingEnemies}");
         }
 
         public void HandleWallDamage(int health)
@@ -43,15 +48,16 @@ namespace UI.Windows
 
         public void HandleKillCharacter()
         {
-            UpdateEnemyCounter();
+            _remainingEnemies--;
+            UpdateEnemyCounter(_remainingEnemies);
         }
 
         public override void Uninit()
         {
             EventBus.Unsubscribe(this);
-            _remainingEnemies = _maxEnemies;
             _healthCounter = null;
             _enemyCounter = null;
+            _remainingEnemies = default;
             base.Uninit();
         }
     }
