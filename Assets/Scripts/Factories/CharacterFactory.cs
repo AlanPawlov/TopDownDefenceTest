@@ -30,7 +30,7 @@ namespace Factories
             Quaternion rotation = new Quaternion())
         {
             var result = await Create(resource, position, rotation);
-            result.ResourceName = resource;
+            result.ResourceName = $"{characterType}_{resource}";
             IWeapon weapon = null;
             switch (characterType)
             {

@@ -1,22 +1,22 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Events.Handlers;
 using Factories;
 using Pools;
-using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Services
 {
-    public class EnemySpawner : IDisposable
+    public class EnemySpawner : IDisposable,IDeathHandler
     {
         private float _maxSpawnDelay = 3;
         private float _minSpawnDelay = 1.8f;
         private float _spawnDelay;
         private float _spawnTimer;
 
-        private int _maxEnemySpawned = 5;
+        private int _maxEnemySpawned = 30;
         private int _curEnemySpawned;
         private bool _isWork;
 
@@ -25,18 +25,30 @@ namespace Services
         private EnemySpawnPoint[] _spawnPoints;
         private UpdateSender _updateSender;
         private string _enemyPath = "Prefabs/Player";
+        private List<Character> _characters;
 
         public EnemySpawner(UpdateSender updateSender, CharacterFactory factory,CharacterPool characterPool, EnemySpawnPoint[] spawnPoints)
         {
+            _characters = new List<Character>();
             _updateSender = updateSender;
             _factory = factory;
             _pool = characterPool;
             _spawnPoints = spawnPoints;
             _updateSender.OnUpdate += OnUpdate;
+        }
+
+        public void StartWork()
+        {
             _isWork = true;
             SetSpawnDelay();
         }
-
+        
+        
+        public void StopWork()
+        {
+            _isWork = false;
+        }
+        
         private void OnUpdate()
         {
             if (!_isWork)
@@ -74,6 +86,15 @@ namespace Services
             _spawnTimer = _spawnDelay;
         }
 
+        
+        public void KillAll()
+        {
+            for (int i = _characters.Count - 1; i > 0; i--)
+            {
+                HandleDeath(_characters[i]);
+            }
+        }
+        
         public void Dispose()
         {
             _updateSender = null;
@@ -81,6 +102,13 @@ namespace Services
             _spawnPoints = null;
             _updateSender.OnUpdate -= OnUpdate;
             _isWork = true;
+        }
+
+
+        public void HandleDeath(Character character)
+        {
+            if (_characters.Contains(character))
+                _characters.Remove(character);
         }
     }
 }
