@@ -43,7 +43,7 @@ namespace Weapon
             if (bullet == null)
                 bullet = await _factory.Create(_bulletPath, _owner.GetPosition(),
                     Quaternion.Euler(0.0f, 0.0f, angle));
-            bullet.Setup(1, 2.5f, _owner);
+            bullet.Setup(1, 8.5f, _owner);
         }
     }
 }

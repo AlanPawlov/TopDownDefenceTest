@@ -1,3 +1,4 @@
+using Events.Handlers;
 using Interfaces;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class Wall : MonoBehaviour, IDamageable
         if (_health <= 0)
         {
             Death();
+            Events.EventBus.RaiseEvent<IWallDestroyedHandler>(h => h.HandleWallDestroyed());
         }
     }
 

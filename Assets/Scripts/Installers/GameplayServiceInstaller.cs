@@ -12,7 +12,8 @@ namespace Installers
         [SerializeField] private EnemySpawnPoint[] _enemySpawnPoint;
         [SerializeField] private PlayerSpawnPoint _playerSpawnPoint;
         [SerializeField] private Wall _wall;
-        
+        [SerializeField] private GameplaySceneStartup _gameplaySceneStartup;
+
         public override void InstallBindings()
         {
             BindWall();
@@ -28,6 +29,8 @@ namespace Installers
             BindPlayerSpawner();
             BindCharacterPool();
             BindProjectilePool();
+            BindMatcController();
+            BindIntefaces();
         }
 
         private void BindPlayerSpawnPoint()
@@ -90,7 +93,7 @@ namespace Installers
                 .AsSingle()
                 .NonLazy();
         }
-        
+
         private void BindEnemyAttack()
         {
             Container
@@ -124,7 +127,7 @@ namespace Installers
                 .FromNew()
                 .AsSingle();
         }
-        
+
         private void BindProjectilePool()
         {
             Container
@@ -141,5 +144,20 @@ namespace Installers
                 .AsSingle();
         }
 
+        private void BindMatcController()
+        {
+            Container
+                .Bind<MatchController>()
+                .FromNew()
+                .AsSingle();
+        }
+        
+        private void BindIntefaces()
+        {
+            Container
+                .BindInterfacesTo<GameplaySceneStartup>()
+                .FromInstance(_gameplaySceneStartup)
+                .AsSingle();
+        }
     }
 }

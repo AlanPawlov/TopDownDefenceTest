@@ -39,6 +39,7 @@ public class Character : MonoBehaviour, IDamageable, IMovable, IAttackable, IPoo
         if (_health <= 0)
         {
             Death();
+            Events.EventBus.RaiseEvent<IKillCharacterHandler>(h => h.HandleKillCharacter());
         }
     }
 
