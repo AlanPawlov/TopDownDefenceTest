@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using Character;
+using Environment;
 using Events.Handlers;
 using Factories;
 using Pools;
@@ -7,13 +9,13 @@ using UnityEngine;
 
 namespace Services
 {
-    public class PlayerSpawner
+    public class PlayerSpawner 
     {
         private CharacterFactory _factory;
         private PlayerSpawnPoint _playerSpawnPoint;
-        private string _playerModelId;
         private CharacterPool _pool;
-        private Character _player;
+        private Character.Character _player;
+        private string _playerModelId;
 
         public PlayerSpawner(CharacterFactory factory, CharacterPool characterPool, PlayerSpawnPoint spawnPoint,
             GameSetting setting)
@@ -26,7 +28,7 @@ namespace Services
 
         public async Task Spawn()
         {
-            var player = (Character)_pool.LoadFromPool<Character>(_playerModelId);
+            var player = _pool.LoadFromPool<Character.Character>(_playerModelId,_playerSpawnPoint.transform.position, Quaternion.identity);
             if (player == null)
                 player = await _factory.Create(CharacterType.Player, _playerModelId,
                     _playerSpawnPoint.transform.position, Quaternion.identity);

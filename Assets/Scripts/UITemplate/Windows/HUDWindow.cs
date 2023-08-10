@@ -12,7 +12,7 @@ namespace UI.Windows
         [SerializeField] private Transform _enemyCounterContainer;
         private LabelWidget _healthCounter;
         private LabelWidget _enemyCounter;
-        private int _remainingEnemies = 5;
+        private int _remainingEnemies;
 
         public override async Task Init()
         {

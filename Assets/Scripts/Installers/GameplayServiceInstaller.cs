@@ -1,7 +1,7 @@
 using Factories;
 using Pools;
 using Services;
-using UI;
+using Services.MatchStates;
 using UnityEngine;
 using Zenject;
 
@@ -9,16 +9,10 @@ namespace Installers
 {
     public class GameplayServiceInstaller : MonoInstaller
     {
-        [SerializeField] private EnemySpawnPoint[] _enemySpawnPoint;
-        [SerializeField] private PlayerSpawnPoint _playerSpawnPoint;
-        [SerializeField] private Wall _wall;
         [SerializeField] private GameplaySceneStartup _gameplaySceneStartup;
 
         public override void InstallBindings()
         {
-            BindWall();
-            BindPlayerSpawnPoint();
-            BindEnemySpawnPoints();
             BindPlayerMovement();
             BindCharacterFactory();
             BindEnemySpawner();
@@ -32,31 +26,6 @@ namespace Installers
             BindMatcController();
             BindIntefaces();
         }
-
-        private void BindPlayerSpawnPoint()
-        {
-            Container
-                .Bind<PlayerSpawnPoint>()
-                .FromInstance(_playerSpawnPoint)
-                .AsSingle();
-        }
-
-        private void BindWall()
-        {
-            Container
-                .Bind<Wall>()
-                .FromInstance(_wall)
-                .AsSingle();
-        }
-
-        private void BindEnemySpawnPoints()
-        {
-            Container
-                .Bind<EnemySpawnPoint[]>()
-                .FromInstance(_enemySpawnPoint)
-                .AsSingle();
-        }
-
 
         private void BindPlayerMovement()
         {
@@ -151,7 +120,7 @@ namespace Installers
                 .FromNew()
                 .AsSingle();
         }
-        
+
         private void BindIntefaces()
         {
             Container

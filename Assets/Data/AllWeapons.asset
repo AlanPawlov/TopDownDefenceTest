@@ -15,11 +15,11 @@ MonoBehaviour:
   Weapons:
   - Id: Projectile
     Range: 5
-    AttackSpeed: 1.5
+    AttackSpeed: 5
     Damage: 1
     ProjectileId: DefaultProjectile
   - Id: Melee
-    Range: 0.5
+    Range: 1
     AttackSpeed: 1
     Damage: 1
     ProjectileId: 

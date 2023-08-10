@@ -20,9 +20,9 @@ namespace Pools
             return obj;
         }
 
-        public Character LoadFromPool<T>(string resourceName, Vector3 transformPosition, Quaternion identity)
+        public Character.Character LoadFromPool<T>(string resourceName, Vector3 transformPosition, Quaternion identity)
         {
-            var obj = (Character)LoadFromPool<T>(resourceName, null);
+            var obj = (Character.Character)LoadFromPool<T>(resourceName, null);
             if (obj != null)
             {
                 obj.transform.position = transformPosition;
@@ -32,9 +32,15 @@ namespace Pools
             return obj;
         }
 
-        public void HandleDeath(Character character)
+        public void HandleDeath(Character.Character character)
         {
             RemoveToPool(character);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            EventBus.Unsubscribe(this);
         }
     }
 }

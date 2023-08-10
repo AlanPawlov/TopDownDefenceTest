@@ -40,5 +40,11 @@ namespace Pools
         {
             RemoveToPool(projectile);
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            EventBus.Unsubscribe(this);
+        }
     }
 }

@@ -7,7 +7,6 @@ namespace Services
     {
         public event Action OnUpdate;
         public event Action OnFixedUpdate;
-        
         private static UpdateSender _instance;
 
         private void Awake()

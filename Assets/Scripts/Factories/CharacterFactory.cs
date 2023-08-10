@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Character;
 using Interfaces;
 using Models;
 using Resource;
@@ -10,7 +11,7 @@ using Zenject;
 
 namespace Factories
 {
-    public class CharacterFactory : BaseFactory<Character>
+    public class CharacterFactory : BaseFactory<Character.Character>
     {
         private readonly Dictionary<string, CharacterModel> _characterModels;
         private readonly Dictionary<string, WeaponModel> _weaponModels;
@@ -26,7 +27,7 @@ namespace Factories
             _projectileModels = projectileModels;
         }
 
-        public override async Task<Character> Create(string resource, Vector3 position = new Vector3(),
+        public override async Task<Character.Character> Create(string resource, Vector3 position = new Vector3(),
             Quaternion rotation = new Quaternion())
         {
             var result = await base.Create(resource, position, rotation);
@@ -36,7 +37,7 @@ namespace Factories
             return result;
         }
 
-        public async Task<Character> Create(CharacterType characterType, string id,
+        public async Task<Character.Character> Create(CharacterType characterType, string id,
             Vector3 position = new Vector3(),
             Quaternion rotation = new Quaternion())
         {

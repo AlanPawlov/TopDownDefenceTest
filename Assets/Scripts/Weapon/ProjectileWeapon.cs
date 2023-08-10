@@ -2,7 +2,6 @@
 using Interfaces;
 using Models;
 using Pools;
-using UI;
 using UnityEngine;
 using Zenject;
 
@@ -17,7 +16,7 @@ namespace Weapon
         [Inject] private ProjectileFactory _factory;
         [Inject] private ProjectilePool _pool;
 
-        public ProjectileWeapon(Character owner, WeaponModel weaponModel, ProjectileModel projectileModel) : base(owner)
+        public ProjectileWeapon(Character.Character owner, WeaponModel weaponModel, ProjectileModel projectileModel) : base(owner)
         {
             _attackDistance = weaponModel.Range;
             _damage = weaponModel.Damage;

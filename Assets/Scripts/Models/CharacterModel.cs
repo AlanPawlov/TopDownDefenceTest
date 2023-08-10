@@ -1,4 +1,6 @@
 ﻿using System;
+using UnityEditor.Animations;
+using UnityEngine;
 
 namespace Models
 {
@@ -10,5 +12,7 @@ namespace Models
         public float MinSpeed;
         public string WeaponId;
         public string CharacterPath;
+        public Sprite CharacterView;
+        public AnimatorController AnimatorController;
     }
 }

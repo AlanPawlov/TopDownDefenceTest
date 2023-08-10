@@ -10,9 +10,9 @@ namespace Weapon
     public class Projectile : MonoBehaviour, IPoolable
     {
         [SerializeField] private Rigidbody2D _rigidbody;
-        [SerializeField] private float Speed;
-        [SerializeField] private int Damage;
-        [SerializeField] private bool _isAlive;
+        private float Speed;
+        private int Damage;
+        private bool _isAlive;
         private Collider2D _ownerCollider;
         public Transform Transform => transform;
         public string ResourceName { get; set; }
@@ -23,10 +23,11 @@ namespace Weapon
 
         public void Uninit()
         {
+            _isAlive = false;
         }
 
 
-        public void Setup(int damage, float speed, Character character)
+        public void Setup(int damage, float speed, Character.Character character)
         {
             Damage = damage;
             Speed = speed;
@@ -38,7 +39,6 @@ namespace Weapon
         {
             if (!_isAlive)
                 return;
-
             _rigidbody.velocity = transform.TransformDirection(Vector3.right) * Speed;
         }
 
@@ -48,14 +48,11 @@ namespace Weapon
             if (!_isAlive || col == _ownerCollider)
                 return;
 
-            IDamageable target;
-            if (col.gameObject.TryGetComponent<IDamageable>(out target))
-            {
+            if (col.gameObject.TryGetComponent<IDamageable>(out var target))
                 target.ApplyDamage(Damage);
-                _isAlive = false;
-                Uninit();
-                EventBus.RaiseEvent<IProjectileDeathHandler>(h => h.HandleProjectileDeath(this));
-            }
+
+            Uninit();
+            EventBus.RaiseEvent<IProjectileDeathHandler>(h => h.HandleProjectileDeath(this));
         }
     }
 }
