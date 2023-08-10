@@ -40,13 +40,13 @@ namespace Services
             }
         }
 
-        public void HandleDeath(Character damageable)
+        public void HandleDeath(Character.Character damageable)
         {
             if (_enemies.Contains(damageable))
                 Unregister(damageable);
         }
 
-        public void HandleSpawnEnemy(Character character)
+        public void HandleSpawnEnemy(Character.Character character)
         {
             if (!_enemies.Contains(character))
             {
@@ -54,7 +54,7 @@ namespace Services
             }
         }
 
-        public void HandleSpawnPlayer(Character character)
+        public void HandleSpawnPlayer(Character.Character character)
         {
         }
 
@@ -62,11 +62,7 @@ namespace Services
         {
             Events.EventBus.Unsubscribe(this);
             _updateSender.OnFixedUpdate -= OnFixedUpdate;
-            for (int i = _enemies.Count; i >= 0; i++)
-            {
-                Unregister(_enemies[i]);
-            }
-            
+            _enemies.Clear();
             _updateSender = null;
         }
     }

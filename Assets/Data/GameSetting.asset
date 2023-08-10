@@ -16,5 +16,5 @@ MonoBehaviour:
   PalyerCharacterId: Player
   EnemySpawnerId: DeafaultSpawner
   WallId: DefaultWall
-  MinKillToWin: 5
-  MaxKillToWin: 7
+  MinKillToWin: 15
+  MaxKillToWin: 30

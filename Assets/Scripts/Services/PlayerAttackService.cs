@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Events.Handlers;
 using Interfaces;
@@ -5,11 +6,11 @@ using UnityEngine;
 
 namespace Services
 {
-    public class PlayerAttackService : IDeathHandler, ISpawnCharacterHandler
+    public class PlayerAttackService : IDeathHandler, ISpawnCharacterHandler,IDisposable
     {
         private UpdateSender _updateSender;
         private List<IDamageable> _enemies;
-        private Character _player;
+        private Character.Character _player;
         private bool _isWork;
 
         public PlayerAttackService(UpdateSender updateSender)
@@ -57,13 +58,13 @@ namespace Services
             _player.Attack(target);
         }
 
-        public void HandleDeath(Character damageable)
+        public void HandleDeath(Character.Character damageable)
         {
             if (_enemies.Contains(damageable))
                 Unregister(damageable);
         }
 
-        public void HandleSpawnEnemy(Character character)
+        public void HandleSpawnEnemy(Character.Character character)
         {
             if (!_enemies.Contains(character))
             {
@@ -71,9 +72,16 @@ namespace Services
             }
         }
 
-        public void HandleSpawnPlayer(Character character)
+        public void HandleSpawnPlayer(Character.Character character)
         {
             _player = character;
+        }
+
+        public void Dispose()
+        {
+            _updateSender.OnUpdate -= OnUpdate;
+            Events.EventBus.Unsubscribe(this);
+            _enemies.Clear();
         }
     }
 }

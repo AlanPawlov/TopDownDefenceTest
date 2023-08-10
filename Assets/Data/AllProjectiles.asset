@@ -15,4 +15,4 @@ MonoBehaviour:
   Projectiles:
   - Id: DefaultProjectile
     ResourcePath: Prefabs/Bullet
-    BulletSpeed: 8
+    BulletSpeed: 10

@@ -8,15 +8,19 @@ namespace Services
     public class PlayerMovementService : IDisposable, ISpawnCharacterHandler, IDeathHandler
     {
         private UpdateSender _updateSender;
-        private Character _player;
+        private Character.Character _player;
         private Vector2 _direction;
 
         public PlayerMovementService(UpdateSender updateSender)
         {
             _updateSender = updateSender;
+            Events.EventBus.Subscribe(this);
+        }
+
+        public void StartWork()
+        {
             _updateSender.OnUpdate += OnUpdate;
             _updateSender.OnFixedUpdate += OnFixedUpdate;
-            Events.EventBus.Subscribe(this);
         }
 
         private void OnUpdate()
@@ -28,7 +32,7 @@ namespace Services
 
         public void Register(IMovable movable)
         {
-            _player = (Character)movable;
+            _player = (Character.Character)movable;
         }
 
         public void Unregister(IMovable movable)
@@ -43,21 +47,27 @@ namespace Services
             _player.Move(_direction);
         }
 
-        public void HandleDeath(Character damageable)
+        public void HandleDeath(Character.Character damageable)
         {
             if (damageable == _player)
                 Unregister(damageable);
         }
 
-        public void HandleSpawnEnemy(Character character)
+        public void HandleSpawnEnemy(Character.Character character)
         {
         }
 
-        public void HandleSpawnPlayer(Character character)
+        public void HandleSpawnPlayer(Character.Character character)
         {
             Register(character);
         }
 
+        public void StopWork()
+        {
+            _updateSender.OnUpdate -= OnUpdate;
+            _updateSender.OnFixedUpdate -= OnFixedUpdate;
+        }
+        
         public void Dispose()
         {
             Events.EventBus.Unsubscribe(this);

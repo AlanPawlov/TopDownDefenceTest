@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Character;
+using Environment;
 using Events.Handlers;
 using Factories;
 using Models;
@@ -24,13 +26,13 @@ namespace Services
         private EnemySpawnPoint[] _spawnPoints;
         private UpdateSender _updateSender;
         private string _enemyId;
-        private List<Character> _characters;
+        private List<Character.Character> _characters;
         private string _spawnerId;
 
         public EnemySpawner(UpdateSender updateSender, CharacterFactory factory, CharacterPool characterPool,
             EnemySpawnPoint[] spawnPoints, Dictionary<string, EnemySpawnerModel> enemySpawners, GameSetting setting)
         {
-            _characters = new List<Character>();
+            _characters = new List<Character.Character>();
             _updateSender = updateSender;
             _factory = factory;
             _pool = characterPool;
@@ -41,7 +43,6 @@ namespace Services
             var targetModel = enemySpawners[_spawnerId];
             _minSpawnDelay = targetModel.MinSpawnTimeout;
             _maxSpawnDelay = targetModel.MaxSpawnTimeout;
-
             _updateSender.OnUpdate += OnUpdate;
         }
 
@@ -72,7 +73,7 @@ namespace Services
         private async Task SpawnEnemy()
         {
             var pointIndex = Random.Range(0, _spawnPoints.Length);
-            var enemy = _pool.LoadFromPool<Character>(_enemyId, _spawnPoints[pointIndex].transform.position,
+            var enemy = _pool.LoadFromPool<Character.Character>(_enemyId, _spawnPoints[pointIndex].transform.position,
                 Quaternion.identity);
             if (enemy == null)
                 enemy = await _factory.Create(CharacterType.Enemy, _enemyId,
@@ -96,14 +97,14 @@ namespace Services
 
         public void Dispose()
         {
+            _updateSender.OnUpdate -= OnUpdate;
             _updateSender = null;
             _factory = null;
             _spawnPoints = null;
-            _updateSender.OnUpdate -= OnUpdate;
-            _isWork = true;
+            _isWork = false;
         }
 
-        public void HandleDeath(Character character)
+        public void HandleDeath(Character.Character character)
         {
             if (_characters.Contains(character))
                 _characters.Remove(character);

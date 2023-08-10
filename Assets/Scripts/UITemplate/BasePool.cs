@@ -44,11 +44,10 @@ namespace UI
                     var index = list.Count - 1;
                     obj = list[index];
                     list.RemoveAt(index);
-                    obj.Transform.SetParent(parent);
-                    obj.Transform.gameObject.SetActive(true);
-
                     if (obj.Transform.gameObject == null)
                         Debug.LogError($"{resourceName} GO is null");
+                    obj.Transform.SetParent(parent);
+                    obj.Transform.gameObject.SetActive(true);
                 }
                 else
                     return null;
@@ -76,7 +75,7 @@ namespace UI
             _pool.Clear();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Clear();
         }

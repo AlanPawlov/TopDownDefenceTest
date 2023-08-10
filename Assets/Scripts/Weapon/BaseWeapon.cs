@@ -4,7 +4,7 @@ namespace Weapon
 {
     public class BaseWeapon : IWeapon
     {
-        protected readonly Character _owner;
+        protected readonly Character.Character _owner;
         protected float _attackDistance;
         protected int _damage;
         protected bool _canAtttack;
@@ -12,7 +12,7 @@ namespace Weapon
         public int Damage => _damage;
         public bool CanAttack => _canAtttack;
 
-        public BaseWeapon(Character owner)
+        public BaseWeapon(Character.Character owner)
         {
             _owner = owner;
             _canAtttack = true;

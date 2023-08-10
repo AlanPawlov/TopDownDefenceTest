@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemySpawners:
   - Id: DeafaultSpawner
-    MaxSpawnTimeout: 7
-    MinSpawnTimeout: 3
+    MaxSpawnTimeout: 1
+    MinSpawnTimeout: 2
