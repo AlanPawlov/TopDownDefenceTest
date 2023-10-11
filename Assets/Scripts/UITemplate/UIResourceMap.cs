@@ -5,6 +5,7 @@
         public static class WindowMap
         {
             public static string HUD = "UI/HUDWindow";
+            public static string MainMenu = "UI/MainMenu";
             public static string EndGame = "UI/EndGameWindow";
         }
 

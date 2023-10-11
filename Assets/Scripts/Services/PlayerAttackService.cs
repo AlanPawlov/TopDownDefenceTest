@@ -43,8 +43,7 @@ namespace Services
             {
                 if (_enemies[i] == null)
                     continue;
-                var character = _player;
-                var distance = Vector3.Distance(_enemies[i].GetPosition(), character.transform.position);
+                var distance = Vector3.Distance(_enemies[i].GetPosition(), _player.transform.position);
                 if (distance <= _player.Weapon.AttackDistance && distance < minDistance)
                 {
                     target = _enemies[i];

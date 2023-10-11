@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace UI
@@ -32,6 +33,7 @@ namespace UI
         {
             _container = container;
             _pool = new Dictionary<string, List<IPoolable>>();
+            SceneManager.activeSceneChanged += OnSceneChanged;
         }
 
         public virtual IPoolable LoadFromPool<T>(string resourceName, Transform parent = null)
@@ -70,6 +72,11 @@ namespace UI
             element.Transform.SetParent(PoolHolder);
         }
 
+        private void OnSceneChanged(Scene arg0, Scene arg1)
+        {
+            Clear();
+        }
+
         public void Clear()
         {
             _pool.Clear();
@@ -78,6 +85,7 @@ namespace UI
         public virtual void Dispose()
         {
             Clear();
+            SceneManager.activeSceneChanged -= OnSceneChanged;
         }
     }
 }

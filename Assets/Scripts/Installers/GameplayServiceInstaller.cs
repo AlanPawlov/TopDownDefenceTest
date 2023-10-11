@@ -1,7 +1,7 @@
 using Factories;
 using Pools;
 using Services;
-using Services.MatchStates;
+using States.MatchStates;
 using UnityEngine;
 using Zenject;
 
@@ -9,25 +9,25 @@ namespace Installers
 {
     public class GameplayServiceInstaller : MonoInstaller
     {
-        [SerializeField] private GameplaySceneStartup _gameplaySceneStartup;
+        [SerializeField] private WallDefenceBootstrap _wallDefenceBootstrap;
 
         public override void InstallBindings()
         {
-            BindPlayerMovement();
-            BindCharacterFactory();
-            BindEnemySpawner();
-            BindEnemyMovement();
-            BindPlayerAttack();
-            BindEnemyAttack();
-            BindProjectileFactory();
-            BindPlayerSpawner();
-            BindCharacterPool();
-            BindProjectilePool();
-            BindMatcController();
-            BindIntefaces();
+            RegisterPlayerMovement();
+            RegisterCharacterFactory();
+            RegisterEnemySpawner();
+            RegisterEnemyMovement();
+            RegisterPlayerAttack();
+            RegisterEnemyAttack();
+            RegisterProjectileFactory();
+            RegisterPlayerSpawner();
+            RegisterCharacterPool();
+            RegisterProjectilePool();
+            RegisterStateMachine();
+            // RegisterInitializibleInterface();
         }
 
-        private void BindPlayerMovement()
+        private void RegisterPlayerMovement()
         {
             Container
                 .Bind<PlayerMovementService>()
@@ -36,7 +36,7 @@ namespace Installers
                 .NonLazy();
         }
 
-        private void BindPlayerSpawner()
+        private void RegisterPlayerSpawner()
         {
             Container
                 .Bind<PlayerSpawner>()
@@ -45,7 +45,7 @@ namespace Installers
                 .NonLazy();
         }
 
-        private void BindEnemyMovement()
+        private void RegisterEnemyMovement()
         {
             Container
                 .Bind<EnemyMovementService>()
@@ -54,7 +54,7 @@ namespace Installers
                 .NonLazy();
         }
 
-        private void BindPlayerAttack()
+        private void RegisterPlayerAttack()
         {
             Container
                 .Bind<PlayerAttackService>()
@@ -63,7 +63,7 @@ namespace Installers
                 .NonLazy();
         }
 
-        private void BindEnemyAttack()
+        private void RegisterEnemyAttack()
         {
             Container
                 .Bind<EnemyAttackService>()
@@ -72,7 +72,7 @@ namespace Installers
                 .NonLazy();
         }
 
-        private void BindProjectileFactory()
+        private void RegisterProjectileFactory()
         {
             Container
                 .Bind<ProjectileFactory>()
@@ -80,7 +80,7 @@ namespace Installers
                 .AsSingle();
         }
 
-        private void BindEnemySpawner()
+        private void RegisterEnemySpawner()
         {
             Container
                 .Bind<EnemySpawner>()
@@ -89,7 +89,7 @@ namespace Installers
                 .NonLazy();
         }
 
-        private void BindCharacterFactory()
+        private void RegisterCharacterFactory()
         {
             Container
                 .Bind<CharacterFactory>()
@@ -97,7 +97,7 @@ namespace Installers
                 .AsSingle();
         }
 
-        private void BindProjectilePool()
+        private void RegisterProjectilePool()
         {
             Container
                 .Bind<ProjectilePool>()
@@ -105,7 +105,7 @@ namespace Installers
                 .AsSingle();
         }
 
-        private void BindCharacterPool()
+        private void RegisterCharacterPool()
         {
             Container
                 .Bind<CharacterPool>()
@@ -113,20 +113,20 @@ namespace Installers
                 .AsSingle();
         }
 
-        private void BindMatcController()
+        private void RegisterStateMachine()
         {
             Container
-                .Bind<MatchController>()
-                .FromNew()
-                .AsSingle();
+                .Bind<MatchStateMachine>()
+                .AsSingle()
+                .NonLazy();
         }
 
-        private void BindIntefaces()
-        {
-            Container
-                .BindInterfacesTo<GameplaySceneStartup>()
-                .FromInstance(_gameplaySceneStartup)
-                .AsSingle();
-        }
+        // private void RegisterInitializibleInterface()
+        // {
+        //     Container
+        //         .BindInterfacesTo<WallDefenceBootstrap>()
+        //         .FromInstance(_wallDefenceBootstrap)
+        //         .AsSingle();
+        // }
     }
 }
