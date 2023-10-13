@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5ee3872267946caab9532998e1a43d8, type: 3}
-  m_Name: AllProjectiles
+  m_Script: {fileID: 11500000, guid: 3a189bb168d8d90478a09ea08c2f3d72, type: 3}
+  m_Name: DefaultObject
   m_EditorClassIdentifier: 
-  Projectiles:
-  - Id: DefaultProjectile
-    ResourcePath: Bullet
-    BulletSpeed: 10
+  m_AddressableAssetSettingsGuid: 060af3b0d36e4f04aa6f71227c0412fb

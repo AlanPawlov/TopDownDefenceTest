@@ -174,7 +174,7 @@ namespace Installers
         {
             Container
                 .Bind<IResourceLoader>()
-                .To<ResourceLoader>()
+                .To<AdressablesLoader>()
                 .AsSingle();
         }
 

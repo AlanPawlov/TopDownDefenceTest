@@ -18,14 +18,14 @@ MonoBehaviour:
     MaxSpeed: 1
     MinSpeed: 3
     WeaponId: Melee
-    CharacterPath: Prefabs/Player
+    CharacterPath: Player
     CharacterView: {fileID: -153580204, guid: 98373b91900d13b4792cab3ec58fea21, type: 3}
-    AnimatorController: {fileID: 9100000, guid: 8be6adc9707229a4a9b0bd639c0d977e, type: 2}
+    AnimatorController: {fileID: 22100000, guid: 89ad08a624792904b8a857205837941f, type: 2}
   - Id: Player
     Health: 1
     MaxSpeed: 5
     MinSpeed: 8
     WeaponId: Projectile
-    CharacterPath: Prefabs/Player
+    CharacterPath: Player
     CharacterView: {fileID: 498318822, guid: 798f744f481c97a4c845e29424660213, type: 3}
-    AnimatorController: {fileID: 9100000, guid: 2fea7fee3d9d64d40903607f0cc77a33, type: 2}
+    AnimatorController: {fileID: 22100000, guid: 9a3d3e6e1f3868b44862daa8ddab66f3, type: 2}

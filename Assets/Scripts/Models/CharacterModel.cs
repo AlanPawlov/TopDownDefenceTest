@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Models
@@ -13,6 +12,6 @@ namespace Models
         public string WeaponId;
         public string CharacterPath;
         public Sprite CharacterView;
-        public AnimatorController AnimatorController;
+        public AnimatorOverrideController AnimatorController;
     }
 }
