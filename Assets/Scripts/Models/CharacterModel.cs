@@ -12,6 +12,6 @@ namespace Models
         public string WeaponId;
         public string CharacterPath;
         public Sprite CharacterView;
-        public AnimatorOverrideController AnimatorController;
+        public string AnimatorController;
     }
 }

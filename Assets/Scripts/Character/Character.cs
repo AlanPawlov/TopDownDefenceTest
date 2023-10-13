@@ -35,7 +35,7 @@ namespace Character
             _speed = Random.Range(model.MinSpeed, model.MaxSpeed);
             _weapon = weapon;
             _renderer.sprite = model.CharacterView;
-            _animator.runtimeAnimatorController = model.AnimatorController;
+            // _animator.runtimeAnimatorController = model.AnimatorController;
             _isMovingHashedParameter = Animator.StringToHash("IsMoving");
             _updateSender.OnUpdate += OnUpdate;
         }
