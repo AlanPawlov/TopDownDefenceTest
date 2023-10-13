@@ -4,15 +4,15 @@
     {
         public static class WindowMap
         {
-            public static string HUD = "UI/HUDWindow";
-            public static string MainMenu = "UI/MainMenu";
-            public static string EndGame = "UI/EndGameWindow";
+            public static string HUD = "HUDWindow";
+            public static string MainMenu = "MainMenuWindow";
+            public static string EndGame = "EndGameWindow";
         }
 
         public static class WidgetMap
         {
-            public static string DefaultButtonWidget = "UI/DefaultButton";
-            public static string DefaultLabelWidget = "UI/DefaultLabel";
+            public static string DefaultButtonWidget = "DefaultButton";
+            public static string DefaultLabelWidget = "DefaultLabel";
         }
     }
 }

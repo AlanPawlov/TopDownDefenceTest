@@ -15,6 +15,7 @@ namespace UI
         public async Task<T> Create<T>(string resourceName, Transform parent) where T : BaseUIElement
         {
             var obj = await _resourceLoader.Load<BaseUIElement>(resourceName);
+            // var obj = a.GetComponent<BaseUIElement>();
             obj.transform.parent = parent;
             obj.ResourceName = resourceName;
         

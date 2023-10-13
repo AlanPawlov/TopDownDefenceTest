@@ -14,4 +14,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WallDefence.unity
     guid: 048647950edd32d4ba615b48c5e8f6f9
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: fb88ed67fd65ec94e90b89d707627944, type: 2}

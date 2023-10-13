@@ -5,11 +5,6 @@ namespace Resource
 {
     public class ResourceLoader : IResourceLoader
     {
-        public void Init()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public async Task<T> Load<T>(string resource)  where T : UnityEngine.Object
         {
             var prefab = Resources.Load<T>(resource);
@@ -17,12 +12,7 @@ namespace Resource
             return result;
         }
         
-        public void Release(string resource)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void ReleaseAll()
+        public void Release()
         {
             throw new System.NotImplementedException();
         }
