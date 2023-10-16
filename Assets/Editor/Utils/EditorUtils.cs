@@ -139,6 +139,15 @@ namespace Editor.Utils
             return strWithoutExtension;
         }
 
+        public static string AddAsAddresables(this string str)
+        {
+            var address = str.CollapseAddressablePath();
+            AddToAddressablesGroup(str, address);
+            return address;
+        }
+
+        
+        
         public static void AddToAddressablesGroup(string path, string address)
         {
             var guiID = AssetDatabase.AssetPathToGUID(path);

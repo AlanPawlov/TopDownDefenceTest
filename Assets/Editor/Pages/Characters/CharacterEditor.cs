@@ -25,6 +25,8 @@ namespace Editor.Pages.Characters
             Model = model;
             _animatorOverrideController =
                 AssetDatabase.LoadAssetAtPath<AnimatorOverrideController>(Model.AnimatorController);
+            _characterView = AssetDatabase.LoadAssetAtPath<Sprite>(Model.CharacterView);
+            _prefabPath = AssetDatabase.LoadAssetAtPath<GameObject>(Model.CharacterPath);
         }
 
         [ShowInInspector]
@@ -64,30 +66,6 @@ namespace Editor.Pages.Characters
 
         [ShowInInspector]
         [VerticalGroup("@_title/Group/Left")]
-        public string WeaponId
-        {
-            get => Model.WeaponId;
-            set => Model.WeaponId = value;
-        }
-
-        [ShowInInspector]
-        [VerticalGroup("@_title/Group/Right")]
-        public string PrefabPath
-        {
-            get => Model.CharacterPath;
-            set => Model.CharacterPath = value;
-        }
-
-        [ShowInInspector]
-        [VerticalGroup("@_title/Group/Right")]
-        public Sprite CharacterView
-        {
-            get => Model.CharacterView;
-            set => Model.CharacterView = value;
-        }
-
-        [ShowInInspector]
-        [VerticalGroup("@_title/Group/Right")]
         public AnimatorOverrideController AnimatorController
         {
             get => _animatorOverrideController;
@@ -99,7 +77,7 @@ namespace Editor.Pages.Characters
                     Model.AnimatorController = null;
                     return;
                 }
-                
+
                 var path = AssetDatabase.GetAssetPath(value);
                 var address = path.CollapseAddressablePath();
                 EditorUtils.AddToAddressablesGroup(path, address);
@@ -108,5 +86,60 @@ namespace Editor.Pages.Characters
         }
 
         private AnimatorOverrideController _animatorOverrideController;
+        
+        [ShowInInspector]
+        [VerticalGroup("@_title/Group/Left")]
+        public string WeaponId
+        {
+            get => Model.WeaponId;
+            set => Model.WeaponId = value;
+        }
+
+        [ShowInInspector]
+        [PreviewField(60)]
+        [VerticalGroup("@_title/Group/Right")]
+        public GameObject PrefabPath
+        {
+            get => _prefabPath;
+            set
+            {
+                _prefabPath = value;
+                if (!value)
+                {
+                    Model.CharacterView = null;
+                    return;
+                }
+
+                var path = AssetDatabase.GetAssetPath(value);
+                path.AddAsAddresables();
+                Model.CharacterPath = path;
+            }
+        }
+
+        private GameObject _prefabPath;
+
+        [ShowInInspector]
+        [PreviewField(60)]
+        [VerticalGroup("@_title/Group/Right")]
+        public Sprite CharacterView
+        {
+            get => _characterView;
+            set
+            {
+                _characterView = value;
+                if (!value)
+                {
+                    Model.CharacterView = null;
+                    return;
+                }
+
+                var path = AssetDatabase.GetAssetPath(value);
+                var address = path.CollapseAddressablePath();
+                EditorUtils.AddToAddressablesGroup(path, address);
+                Model.CharacterView = path;
+            }
+        }
+
+        private Sprite _characterView;
     }
 }

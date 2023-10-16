@@ -34,7 +34,7 @@ namespace Character
             _health = model.Health;
             _speed = Random.Range(model.MinSpeed, model.MaxSpeed);
             _weapon = weapon;
-            _renderer.sprite = model.CharacterView;
+            // _renderer.sprite = model.CharacterView;
             // _animator.runtimeAnimatorController = model.AnimatorController;
             _isMovingHashedParameter = Animator.StringToHash("IsMoving");
             _updateSender.OnUpdate += OnUpdate;

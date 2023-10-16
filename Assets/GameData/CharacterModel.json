@@ -4,9 +4,9 @@
     "MaxSpeed": 0.0,
     "MinSpeed": 0.0,
     "WeaponId": null,
-    "CharacterPath": null,
-    "CharacterView": null,
+    "CharacterPath": "Assets/Prefabs/Player.prefab",
+    "CharacterView": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/!$Skor.png",
     "AnimatorController": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/Skor 1.overrideController",
-    "Id": "1821"
+    "Id": "TestPlayer"
   }
 ]

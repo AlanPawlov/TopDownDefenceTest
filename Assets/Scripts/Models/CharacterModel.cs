@@ -11,7 +11,7 @@ namespace Models
         public float MinSpeed;
         public string WeaponId;
         public string CharacterPath;
-        public Sprite CharacterView;
+        public string CharacterView;
         public string AnimatorController;
     }
 }
