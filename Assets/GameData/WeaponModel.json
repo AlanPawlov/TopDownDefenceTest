@@ -5,5 +5,12 @@
     "Damage": 5,
     "ProjectileId": "TestProjectile",
     "Id": "ProjectileWeapon"
+  },
+  {
+    "Range": 1.0,
+    "AttackSpeed": 1.0,
+    "Damage": 1,
+    "ProjectileId": null,
+    "Id": "Melee"
   }
 ]

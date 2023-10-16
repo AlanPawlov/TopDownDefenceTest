@@ -4,6 +4,8 @@ using Data;
 using Editor.Common;
 using Models;
 using Sirenix.OdinInspector;
+using UnityEditor;
+using UnityEngine;
 
 namespace Editor.Pages.Weapon
 {
@@ -24,6 +26,12 @@ namespace Editor.Pages.Weapon
             _gameData = gameData;
             model ??= new WeaponModel();
             Model = model;
+
+            if (!string.IsNullOrEmpty(Model.ProjectileId))
+            {
+                _prefabPath =
+                    AssetDatabase.LoadAssetAtPath<GameObject>(_gameData.Projectiles[Model.ProjectileId].ResourcePath);
+            }
         }
 
         [ShowInInspector]
@@ -62,11 +70,29 @@ namespace Editor.Pages.Weapon
 
         [ShowInInspector]
         [ValueDropdown(nameof(_allProjectileIds), IsUniqueList = true, DropdownWidth = 250, SortDropdownItems = true)]
+        [OnValueChanged(nameof(OnProjectileChanged))]
+        [LabelWidth(150)]
         [VerticalGroup("@_title/Group/Right")]
         public string ProjectileId
         {
             get => Model.ProjectileId;
             set => Model.ProjectileId = value;
+        }
+
+        [ShowInInspector]
+        [PreviewField(60, ObjectFieldAlignment.Center)]
+        [HideLabel]
+        [VerticalGroup("@_title/Group/Right")]
+        public GameObject View
+        {
+            get => _prefabPath;
+        }
+
+        private GameObject _prefabPath;
+
+        private void OnProjectileChanged(string newValue)
+        {
+            _prefabPath = AssetDatabase.LoadAssetAtPath<GameObject>(_gameData.Projectiles[newValue].ResourcePath);
         }
     }
 }

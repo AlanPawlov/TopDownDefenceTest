@@ -5,8 +5,18 @@
     "MinSpeed": 5.0,
     "WeaponId": "ProjectileWeapon",
     "CharacterPath": "Assets/Prefabs/Player.prefab",
-    "CharacterView": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/!$Skor.png",
-    "AnimatorController": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/Skor 1.overrideController",
+    "CharacterView": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/!$Goken.png",
+    "AnimatorController": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/Goken.overrideController",
     "Id": "TestPlayer"
+  },
+  {
+    "Health": 2,
+    "MaxSpeed": 1.0,
+    "MinSpeed": 3.0,
+    "WeaponId": "Melee",
+    "CharacterPath": "Assets/Prefabs/Player.prefab",
+    "CharacterView": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/!$Skor.png",
+    "AnimatorController": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/Skor.overrideController",
+    "Id": "Enemy"
   }
 ]

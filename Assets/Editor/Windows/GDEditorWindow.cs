@@ -4,6 +4,7 @@ using Data;
 using Editor.Common;
 using Editor.Pages.Characters;
 using Editor.Pages.Weapon;
+using Editor.WallDefence;
 using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -18,6 +19,9 @@ namespace Editor.Windows
         private CharacterEditorPage _characterEditor;
         private WeaponEditorPage _weaponEditor;
         private ProjectileEditorPage _projectileEditor;
+        private EnemySpawnerEditorPage _enemySpawnerEditor;
+        private WallDefenceRulesEditorPage _wallDefenceRules;
+        private WallEditorPage _wallEditor;
 
         [MenuItem("GDEditorWindow/Main _%#T")]
         public static void OpenWindow()
@@ -42,6 +46,9 @@ namespace Editor.Windows
             _characterEditor = AddPage<CharacterEditorPage>();
             _weaponEditor = AddPage<WeaponEditorPage>();
             _projectileEditor = AddPage<ProjectileEditorPage>();
+            _enemySpawnerEditor = AddPage<EnemySpawnerEditorPage>();
+            _wallEditor = AddPage<WallEditorPage>();
+            _wallDefenceRules = AddPage<WallDefenceRulesEditorPage>();
         }
 
         private void FillTree()
@@ -50,6 +57,9 @@ namespace Editor.Windows
             _tree.Add("Characters/CharacterEditor", _characterEditor);
             _tree.Add("Weapon/WeaponEditor", _weaponEditor);
             _tree.Add("Weapon/ProjectileEditor", _projectileEditor);
+            _tree.Add("Gamemodes/WallDefence/WallDefenceEditor", _wallDefenceRules);
+            _tree.Add("Gamemodes/WallDefence/Spawners", _enemySpawnerEditor);
+            _tree.Add("Gamemodes/WallDefence/Walls", _wallEditor);
         }
 
         private T AddPage<T>() where T : BaseEditorPage

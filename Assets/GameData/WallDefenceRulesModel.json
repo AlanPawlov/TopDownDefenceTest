@@ -1,0 +1,11 @@
+[
+  {
+    "EnemyCharacterId": "Enemy",
+    "PalyerCharacterId": "TestPlayer",
+    "EnemySpawnerId": "TestSpawner",
+    "WallId": "DefaultWall",
+    "MinKillToWin": 10,
+    "MaxKillToWin": 30,
+    "Id": "DefaultRules"
+  }
+]

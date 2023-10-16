@@ -1,0 +1,7 @@
+[
+  {
+    "MaxSpawnTimeout": 1.0,
+    "MinSpawnTimeout": 2.0,
+    "Id": "TestSpawner"
+  }
+]
