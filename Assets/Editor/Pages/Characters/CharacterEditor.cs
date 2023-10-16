@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Data;
 using Editor.Common;
 using Editor.Utils;
@@ -13,6 +15,8 @@ namespace Editor.Pages.Characters
     {
         private readonly GameData _gameData;
         private string _title => Model.Id;
+        private Dictionary<string, WeaponModel> _weapons => _gameData.Weapons;
+        private string[] _allWeaponIds => _weapons.Select(l => l.Value).Select(t => t.Id).ToArray();
 
         public CharacterEditor()
         {
@@ -86,8 +90,9 @@ namespace Editor.Pages.Characters
         }
 
         private AnimatorOverrideController _animatorOverrideController;
-        
+
         [ShowInInspector]
+        [ValueDropdown(nameof(_allWeaponIds), IsUniqueList = true, DropdownWidth = 250, SortDropdownItems = true)]
         [VerticalGroup("@_title/Group/Left")]
         public string WeaponId
         {
@@ -98,7 +103,7 @@ namespace Editor.Pages.Characters
         [ShowInInspector]
         [PreviewField(60)]
         [VerticalGroup("@_title/Group/Right")]
-        public GameObject PrefabPath
+        public GameObject CharacterPrefab
         {
             get => _prefabPath;
             set

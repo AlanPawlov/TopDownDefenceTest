@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Data;
 using Editor.Common;
 using Editor.Pages.Characters;
+using Editor.Pages.Weapon;
 using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace Editor.Windows
         private GameData _gameData;
         private OdinMenuTree _tree;
         private CharacterEditorPage _characterEditor;
+        private WeaponEditorPage _weaponEditor;
+        private ProjectileEditorPage _projectileEditor;
 
         [MenuItem("GDEditorWindow/Main _%#T")]
         public static void OpenWindow()
@@ -37,12 +40,16 @@ namespace Editor.Windows
 
             _allPages = new List<BaseEditorPage>();
             _characterEditor = AddPage<CharacterEditorPage>();
+            _weaponEditor = AddPage<WeaponEditorPage>();
+            _projectileEditor = AddPage<ProjectileEditorPage>();
         }
 
         private void FillTree()
         {
             _tree.Selection.SupportsMultiSelect = false;
             _tree.Add("Characters/CharacterEditor", _characterEditor);
+            _tree.Add("Weapon/WeaponEditor", _weaponEditor);
+            _tree.Add("Weapon/ProjectileEditor", _projectileEditor);
         }
 
         private T AddPage<T>() where T : BaseEditorPage

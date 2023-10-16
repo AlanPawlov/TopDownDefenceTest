@@ -1,0 +1,7 @@
+[
+  {
+    "ResourcePath": "Assets/Prefabs/Bullet.prefab",
+    "BulletSpeed": 10.0,
+    "Id": "TestProjectile"
+  }
+]

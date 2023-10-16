@@ -1,9 +1,9 @@
 [
   {
-    "Health": 0,
-    "MaxSpeed": 0.0,
-    "MinSpeed": 0.0,
-    "WeaponId": null,
+    "Health": 1,
+    "MaxSpeed": 8.0,
+    "MinSpeed": 5.0,
+    "WeaponId": "ProjectileWeapon",
     "CharacterPath": "Assets/Prefabs/Player.prefab",
     "CharacterView": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/!$Skor.png",
     "AnimatorController": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/Skor 1.overrideController",

@@ -10,11 +10,4 @@ namespace Models
         public int Damage;
         public string ProjectileId;
     }
-
-    [Serializable]
-    public class ProjectileModel : BaseModel
-    {
-        public string ResourcePath;
-        public float BulletSpeed;
-    }
 }
