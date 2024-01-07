@@ -3,7 +3,6 @@ using Data;
 using Models;
 using Resource;
 using Services;
-using SO;
 using States.GameStates;
 using UI;
 using UITemplate;
@@ -16,7 +15,6 @@ namespace Installers
     {
         [SerializeField] private UpdateSender _updateSender;
         [SerializeField] private MainCanvas _globalCanvas;
-        [SerializeField] private GameSetting _setting;
         [SerializeField] private ProjectBootstrap _projectBootstrap;
         private GameData _gameData;
         
@@ -40,7 +38,7 @@ namespace Installers
             RegisterEnemySpawners();
             RegisterWallModels();
             RegisterProjectileModels();
-            RegisterSetting();
+            RegisterRules();
         }
 
         private void InitGamedata()
@@ -102,11 +100,12 @@ namespace Installers
                 .AsSingle();
         }
 
-        private void RegisterSetting()
+        private void RegisterRules()
         {
+            var rules = _gameData.WallDefenceRules;
             Container
-                .Bind<GameSetting>()
-                .FromInstance(_setting)
+                .Bind<Dictionary<string, WallDefenceRulesModel>>()
+                .FromInstance(rules)
                 .AsSingle();
         }
 

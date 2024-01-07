@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using Events;
 using Events.Handlers;
 using Models;
 using Services;
-using SO;
 using UI;
 using UI.Windows;
 using UnityEngine;
@@ -23,13 +23,14 @@ namespace States.MatchStates
         private PlayerMovementService _playerMovementService;
 
         public LoopMatchState(IGameStateMachine stateMachine, EnemySpawner enemySpawner, UIManager uiManager,
-            GameSetting setting, Dictionary<string, WallModel> wallModels,
+            Dictionary<string,WallDefenceRulesModel> rules, Dictionary<string, WallModel> wallModels,
             PlayerMovementService playerMovementService) : base(
             stateMachine)
         {
             _uiManager = uiManager;
             _playerMovementService = playerMovementService;
             _enemySpawner = enemySpawner;
+            var setting = rules.First().Value;
             _maxKill = setting.MaxKillToWin;
             _minKill = setting.MinKillToWin;
             _walllHealth = wallModels[setting.WallId].Health;

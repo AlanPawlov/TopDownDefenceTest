@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Character;
 using Environment;
@@ -7,7 +8,6 @@ using Events.Handlers;
 using Factories;
 using Models;
 using Pools;
-using SO;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -30,16 +30,15 @@ namespace Services
         private string _spawnerId;
 
         public EnemySpawner(UpdateSender updateSender, CharacterFactory factory, CharacterPool characterPool,
-            EnemySpawnPoint[] spawnPoints, Dictionary<string, EnemySpawnerModel> enemySpawners, GameSetting setting)
+            EnemySpawnPoint[] spawnPoints, Dictionary<string, EnemySpawnerModel> enemySpawners, Dictionary<string,WallDefenceRulesModel> setting)
         {
             _characters = new List<Character.Character>();
             _updateSender = updateSender;
             _factory = factory;
             _pool = characterPool;
             _spawnPoints = spawnPoints;
-
-            _enemyId = setting.EnemyCharacterId;
-            _spawnerId = setting.EnemySpawnerId;
+            _enemyId = setting.First().Value.EnemyCharacterId;
+            _spawnerId = setting.First().Value.EnemySpawnerId;
             var targetModel = enemySpawners[_spawnerId];
             _minSpawnDelay = targetModel.MinSpawnTimeout;
             _maxSpawnDelay = targetModel.MaxSpawnTimeout;

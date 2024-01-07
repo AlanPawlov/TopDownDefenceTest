@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using Events;
 using Events.Handlers;
 using Interfaces;
 using Models;
-using SO;
 using UnityEngine;
 using Zenject;
 
@@ -17,9 +17,9 @@ namespace Environment
         public int Health => _curHealth;
 
         [Inject]
-        public void Construct(Dictionary<string, WallModel> wallModels, GameSetting setting)
+        public void Construct(Dictionary<string, WallModel> wallModels, Dictionary<string,WallDefenceRulesModel> setting)
         {
-            _id = setting.WallId;
+            _id = setting.First().Value.WallId;
             _maxHealth = wallModels[_id].Health;
             _curHealth = _maxHealth;
         }

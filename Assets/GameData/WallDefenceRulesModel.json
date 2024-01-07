@@ -1,7 +1,7 @@
 [
   {
     "EnemyCharacterId": "Enemy",
-    "PalyerCharacterId": "TestPlayer",
+    "PalyerCharacterId": "Player",
     "EnemySpawnerId": "TestSpawner",
     "WallId": "DefaultWall",
     "MinKillToWin": 10,

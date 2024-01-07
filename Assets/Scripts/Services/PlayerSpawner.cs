@@ -1,10 +1,12 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Character;
 using Environment;
 using Events.Handlers;
 using Factories;
+using Models;
 using Pools;
-using SO;
 using UnityEngine;
 
 namespace Services
@@ -18,12 +20,12 @@ namespace Services
         private string _playerModelId;
 
         public PlayerSpawner(CharacterFactory factory, CharacterPool characterPool, PlayerSpawnPoint spawnPoint,
-            GameSetting setting)
+            Dictionary<string,WallDefenceRulesModel> setting)
         {
             _playerSpawnPoint = spawnPoint;
             _factory = factory;
             _pool = characterPool;
-            _playerModelId = setting.PalyerCharacterId;
+            _playerModelId = setting.First().Value.PalyerCharacterId;
         }
 
         public async Task Spawn()
