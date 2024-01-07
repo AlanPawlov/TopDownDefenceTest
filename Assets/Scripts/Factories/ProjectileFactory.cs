@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Factories
 {
-    public class ProjectileFactory : BaseFactory<Projectile>
+    public class ProjectileFactory : BaseFactory<GameObject>
     {
         private readonly Dictionary<string, WeaponModel> _weaponModels;
 
@@ -19,10 +19,12 @@ namespace Factories
             _weaponModels = weaponModels;
         }
 
-        public override async Task<Projectile> Create(string resource, Vector3 position = new Vector3(),
+        public async Task<Projectile> Create(string resource, Vector3 position = new Vector3(),
             Quaternion rotation = new Quaternion())
         {
-            var result = await base.Create(resource, position, rotation);
+            var prefab = await base.Create(resource, position, rotation);
+            var result = Object.Instantiate(prefab.GetComponent<Projectile>());
+            _diContainer.Inject(result);
             result.ResourceName = resource;
             var transform = result.transform;
             transform.position = position;

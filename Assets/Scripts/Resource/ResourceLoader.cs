@@ -7,8 +7,7 @@ namespace Resource
     {
         public async Task<T> Load<T>(string resource)  where T : UnityEngine.Object
         {
-            var prefab = Resources.Load<T>(resource);
-            var result = Object.Instantiate<T>(prefab);
+            var result = Resources.Load<T>(resource);
             return result;
         }
         

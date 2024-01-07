@@ -104,5 +104,13 @@ namespace Utils
             TypeNameHandling = TypeNameHandling.Auto,
             Formatting = Formatting.Indented
         };
+        
+        public static string CollapseAddressablePath(this string str)
+        {
+            var strWithoutPath = str.Substring(str.LastIndexOf("/") + 1);
+            var strWithoutExtension = strWithoutPath.Replace(strWithoutPath.Substring(strWithoutPath.LastIndexOf(".")), "");
+            return strWithoutExtension;
+        }
+
     }
 }

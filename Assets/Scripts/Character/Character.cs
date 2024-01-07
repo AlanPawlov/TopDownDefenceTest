@@ -2,8 +2,11 @@ using System.Threading.Tasks;
 using Events.Handlers;
 using Interfaces;
 using Models;
+using Resource;
 using Services;
 using UnityEngine;
+using UnityEngine.UI;
+using Utils;
 using Zenject;
 using IPoolable = UI.IPoolable;
 using Random = UnityEngine.Random;
@@ -17,6 +20,7 @@ namespace Character
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Animator _animator;
         [Inject] private UpdateSender _updateSender;
+        private CharacterModel _model;
         private IWeapon _weapon;
         private int _isMovingHashedParameter;
         private int _health;
@@ -29,17 +33,22 @@ namespace Character
         public Transform Transform => transform;
         public string ResourceName { get; set; }
 
-        public void Setup(IWeapon weapon, CharacterModel model)
+        public void SetupBaseStats(IWeapon weapon, CharacterModel model)
         {
-            _health = model.Health;
-            _speed = Random.Range(model.MinSpeed, model.MaxSpeed);
+            _model = model;
+            _health = _model.Health;
+            _speed = Random.Range(_model.MinSpeed, _model.MaxSpeed);
             _weapon = weapon;
-            // _renderer.sprite = model.CharacterView;
-            // _animator.runtimeAnimatorController = model.AnimatorController;
-            _isMovingHashedParameter = Animator.StringToHash("IsMoving");
             _updateSender.OnUpdate += OnUpdate;
         }
 
+        public async void SetupView(IResourceLoader resourceLoader)
+        {
+            _renderer.sprite =  await resourceLoader.Load<Sprite>(_model.CharacterView.CollapseAddressablePath());
+            _animator.runtimeAnimatorController = await resourceLoader.Load<AnimatorOverrideController>(_model.AnimatorController.CollapseAddressablePath());
+            _isMovingHashedParameter = Animator.StringToHash("IsMoving");
+        }
+        
         private void OnUpdate()
         {
             _weapon.OnUpdate();

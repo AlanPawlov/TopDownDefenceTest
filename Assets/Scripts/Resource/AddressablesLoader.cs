@@ -1,36 +1,27 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using Object = UnityEngine.Object;
 
 namespace Resource
 {
-    public class AdressablesLoader : IResourceLoader
+    public class AddressablesLoader : IResourceLoader
     {
         private Dictionary<string, AsyncOperationHandle> _cache;
         private Dictionary<string, List<AsyncOperationHandle>> _handles;
 
-        public AdressablesLoader()
+        public AddressablesLoader()
         {
             _cache = new Dictionary<string, AsyncOperationHandle>();
             _handles = new Dictionary<string, List<AsyncOperationHandle>>();
             Addressables.InitializeAsync();
         }
-
+        
         public async Task<T> Load<T>(string resource) where T : Object
         {
-            var prefab = await LoadAsset<GameObject>(resource);
-            var result = Object.Instantiate(prefab.GetComponent<T>());
-            return result;
-        }
-
-        public async Task<T> LoadAsset<T>(string resource) where T : Object
-        {
             if (_cache.TryGetValue(resource, out AsyncOperationHandle completedHandle))
-            {
                 return completedHandle.Result as T;
-            }
 
             var handle = Addressables.LoadAssetAsync<T>(resource);
             var result = await RunWithCacheOnComplete(handle, cacheKey: resource);

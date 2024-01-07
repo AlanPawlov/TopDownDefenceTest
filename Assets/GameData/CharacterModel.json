@@ -7,7 +7,7 @@
     "CharacterPath": "Assets/Prefabs/Player.prefab",
     "CharacterView": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/!$Goken.png",
     "AnimatorController": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/Goken.overrideController",
-    "Id": "TestPlayer"
+    "Id": "Player"
   },
   {
     "Health": 2,

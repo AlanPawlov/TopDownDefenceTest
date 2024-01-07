@@ -3,6 +3,7 @@ using Interfaces;
 using Models;
 using Pools;
 using UnityEngine;
+using Utils;
 using Zenject;
 
 namespace Weapon
@@ -22,7 +23,7 @@ namespace Weapon
             _damage = weaponModel.Damage;
             _cooldownTime = 1 / weaponModel.AttackSpeed;
             _bulletSpeed = projectileModel.BulletSpeed;
-            _bulletPath = projectileModel.ResourcePath;
+            _bulletPath = projectileModel.ResourcePath.CollapseAddressablePath();
             _canAtttack = true;
         }
 
@@ -39,6 +40,7 @@ namespace Weapon
         {
             if (!_canAtttack)
                 return;
+            
             _canAtttack = false;
             _cooldownTimer = 0;
             var ownerPosition = _owner.GetPosition();

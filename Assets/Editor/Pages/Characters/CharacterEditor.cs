@@ -7,6 +7,7 @@ using Models;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using Utils;
 
 namespace Editor.Pages.Characters
 {
@@ -116,7 +117,7 @@ namespace Editor.Pages.Characters
                 }
 
                 var path = AssetDatabase.GetAssetPath(value);
-                path.AddAsAddresables();
+                path.AddAsAddressables();
                 Model.CharacterPath = path;
             }
         }

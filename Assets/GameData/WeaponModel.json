@@ -1,7 +1,7 @@
 [
   {
     "Range": 5.0,
-    "AttackSpeed": 1.0,
+    "AttackSpeed": 3.5,
     "Damage": 5,
     "ProjectileId": "TestProjectile",
     "Id": "ProjectileWeapon"

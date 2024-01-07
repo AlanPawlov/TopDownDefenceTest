@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Services
 {
-    public class PlayerSpawner 
+    public class PlayerSpawner
     {
         private CharacterFactory _factory;
         private PlayerSpawnPoint _playerSpawnPoint;
@@ -28,10 +28,12 @@ namespace Services
 
         public async Task Spawn()
         {
-            var player = _pool.LoadFromPool<Character.Character>(_playerModelId,_playerSpawnPoint.transform.position, Quaternion.identity);
+            var position = _playerSpawnPoint.transform.position;
+            var rotation = Quaternion.identity;
+
+            var player = _pool.LoadFromPool<Character.Character>(_playerModelId, position, rotation);
             if (player == null)
-                player = await _factory.Create(CharacterType.Player, _playerModelId,
-                    _playerSpawnPoint.transform.position, Quaternion.identity);
+                player = await _factory.Create(CharacterType.Player, _playerModelId, position, rotation);
 
             _player = player;
             Events.EventBus.RaiseEvent<ISpawnCharacterHandler>(h => h.HandleSpawnPlayer(player));

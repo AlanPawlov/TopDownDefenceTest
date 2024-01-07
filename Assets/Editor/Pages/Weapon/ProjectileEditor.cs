@@ -60,7 +60,7 @@ namespace Editor.Pages.Weapon
                 }
 
                 var path = AssetDatabase.GetAssetPath(value);
-                path.AddAsAddresables();
+                path.AddAsAddressables();
                 Model.ResourcePath = path;
             }
         }

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEngine;
+using Utils;
 using Random = UnityEngine.Random;
 
 namespace Editor.Utils
@@ -131,22 +132,13 @@ namespace Editor.Utils
             TypeNameHandling = TypeNameHandling.Auto,
             Formatting = Formatting.Indented
         };
-
-        public static string CollapseAddressablePath(this string str)
-        {
-            var strWithoutPath = str.Substring(str.LastIndexOf("/") + 1);
-            var strWithoutExtension = strWithoutPath.Replace(strWithoutPath.Substring(strWithoutPath.LastIndexOf(".")), "");
-            return strWithoutExtension;
-        }
-
-        public static string AddAsAddresables(this string str)
+        
+        public static string AddAsAddressables(this string str)
         {
             var address = str.CollapseAddressablePath();
             AddToAddressablesGroup(str, address);
             return address;
         }
-
-        
         
         public static void AddToAddressablesGroup(string path, string address)
         {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyCharacterId: Enemy
   PalyerCharacterId: Player
-  EnemySpawnerId: DeafaultSpawner
+  EnemySpawnerId: TestSpawner
   WallId: DefaultWall
   MinKillToWin: 15
   MaxKillToWin: 30

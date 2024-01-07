@@ -43,16 +43,18 @@ namespace States.MatchStates
             var bottomBorderMax = camera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
             var horizontalBorderSize = new Vector2(rightBorderMax - leftBorderMax, 1);
             var verticalBorderSize = new Vector2(1, topBorderMax - bottomBorderMax);
-            var leftBorderBorder = await _resourceLoader.Load<BoxCollider2D>("Border");
+
+            var prefab = await _resourceLoader.Load<GameObject>("Border");
+            var leftBorderBorder = Object.Instantiate(prefab).GetComponent<BoxCollider2D>();
             leftBorderBorder.size = verticalBorderSize;
             leftBorderBorder.transform.position = new Vector3(leftBorderMax - leftBorderBorder.size.x / 2, 0, 0);
-            var rightBorderBorder = await _resourceLoader.Load<BoxCollider2D>("Border");
+            var rightBorderBorder = Object.Instantiate(prefab).GetComponent<BoxCollider2D>();
             rightBorderBorder.size = verticalBorderSize;
             rightBorderBorder.transform.position = new Vector3(rightBorderMax + leftBorderBorder.size.x / 2, 0, 0);
-            var topBorderBorder = await _resourceLoader.Load<BoxCollider2D>("Border");
+            var topBorderBorder = Object.Instantiate(prefab).GetComponent<BoxCollider2D>();
             topBorderBorder.size = horizontalBorderSize;
             topBorderBorder.transform.position = new Vector3(0, topBorderMax + topBorderBorder.size.y / 2, 0);
-            var bottomBorderBorder = await _resourceLoader.Load<BoxCollider2D>("Border");
+            var bottomBorderBorder = Object.Instantiate(prefab).GetComponent<BoxCollider2D>();
             bottomBorderBorder.size = horizontalBorderSize;
             bottomBorderBorder.transform.position = new Vector3(0, bottomBorderMax - bottomBorderBorder.size.y / 2, 0);
         }

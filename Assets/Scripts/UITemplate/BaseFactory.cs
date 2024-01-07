@@ -20,7 +20,6 @@ namespace UITemplate
             Quaternion rotation = new Quaternion())
         {
             var obj = await _resourceLoader.Load<T>(resource);
-            _diContainer.Inject(obj);
             return obj;
         }
     }
