@@ -46,7 +46,7 @@ namespace UI
                     var index = list.Count - 1;
                     obj = list[index];
                     list.RemoveAt(index);
-                    if (obj.Transform.gameObject == null)
+                    if (obj.Transform == null || obj.Transform.gameObject == null)
                         Debug.LogError($"{resourceName} GO is null");
                     obj.Transform.SetParent(parent);
                     obj.Transform.gameObject.SetActive(true);
