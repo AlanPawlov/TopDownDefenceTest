@@ -20,29 +20,31 @@ namespace Services
         private float _spawnDelay;
         private float _spawnTimer;
         private bool _isWork;
-
+        private List<Character.Character> _characters;
+        private EnemySpawnPoint[] _spawnPoints;
         private CharacterFactory _factory;
         private CharacterPool _pool;
-        private EnemySpawnPoint[] _spawnPoints;
         private UpdateSender _updateSender;
         private string _enemyId;
-        private List<Character.Character> _characters;
         private string _spawnerId;
 
         public EnemySpawner(UpdateSender updateSender, CharacterFactory factory, CharacterPool characterPool,
-            EnemySpawnPoint[] spawnPoints, Dictionary<string, EnemySpawnerModel> enemySpawners, Dictionary<string,WallDefenceRulesModel> setting)
+            EnemySpawnPoint[] spawnPoints, Dictionary<string, EnemySpawnerModel> enemySpawners,
+            Dictionary<string, WallDefenceRulesModel> setting)
         {
             _characters = new List<Character.Character>();
             _updateSender = updateSender;
             _factory = factory;
             _pool = characterPool;
             _spawnPoints = spawnPoints;
-            _enemyId = setting.First().Value.EnemyCharacterId;
-            _spawnerId = setting.First().Value.EnemySpawnerId;
+            var rules = setting.First().Value;
+            _enemyId = rules.EnemyCharacterId;
+            _spawnerId = rules.EnemySpawnerId;
             var targetModel = enemySpawners[_spawnerId];
             _minSpawnDelay = targetModel.MinSpawnTimeout;
             _maxSpawnDelay = targetModel.MaxSpawnTimeout;
             _updateSender.OnUpdate += OnUpdate;
+            Events.EventBus.Subscribe(this);
         }
 
         public void StartWork()
@@ -77,6 +79,8 @@ namespace Services
             if (enemy == null)
                 enemy = await _factory.Create(CharacterType.Enemy, _enemyId,
                     _spawnPoints[pointIndex].transform.position);
+
+            _characters.Add(enemy);
             Events.EventBus.RaiseEvent<ISpawnCharacterHandler>(h => h.HandleSpawnEnemy(enemy));
         }
 
@@ -88,14 +92,15 @@ namespace Services
 
         public void KillAll()
         {
-            for (int i = _characters.Count - 1; i > 0; i--)
+            for (int i = _characters.Count - 1; i >= 0; i--)
             {
-                HandleDeath(_characters[i]);
+                _characters[i].Death();
             }
         }
 
         public void Dispose()
         {
+            Events.EventBus.Unsubscribe(this);
             _updateSender.OnUpdate -= OnUpdate;
             _updateSender = null;
             _factory = null;
