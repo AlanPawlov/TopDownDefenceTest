@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace UI
+namespace Common.Pool
 {
     public interface IPoolable
     {

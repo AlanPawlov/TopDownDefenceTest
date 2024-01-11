@@ -1,4 +1,4 @@
-using Weapon;
+using Game.Weapon;
 
 namespace Common.Events.Handlers
 {

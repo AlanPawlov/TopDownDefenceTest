@@ -1,11 +1,11 @@
 using Common.Events;
 using Common.Events.Handlers;
-using UI;
+using Common.Pool;
 using UnityEngine;
 using Zenject;
-using IPoolable = UI.IPoolable;
+using IPoolable = Common.Pool.IPoolable;
 
-namespace Pools
+namespace Game.Character
 {
     public class CharacterPool : BasePool, IDeathHandler
     {
@@ -20,9 +20,9 @@ namespace Pools
             return obj;
         }
 
-        public Character.Character LoadFromPool<T>(string resourceName, Vector3 transformPosition, Quaternion identity)
+        public Character LoadFromPool<T>(string resourceName, Vector3 transformPosition, Quaternion identity)
         {
-            var obj = (Character.Character)LoadFromPool<T>(resourceName, null);
+            var obj = (Character)LoadFromPool<T>(resourceName, null);
             if (obj != null)
             {
                 obj.transform.position = transformPosition;
@@ -32,7 +32,7 @@ namespace Pools
             return obj;
         }
 
-        public void HandleDeath(Character.Character character)
+        public void HandleDeath(Character character)
         {
             RemoveToPool(character);
         }

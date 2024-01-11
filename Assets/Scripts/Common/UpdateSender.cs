@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Services
+namespace Common
 {
     public class UpdateSender : MonoBehaviour
     {

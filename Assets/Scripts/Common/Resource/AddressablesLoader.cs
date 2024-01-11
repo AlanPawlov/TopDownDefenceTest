@@ -4,7 +4,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 
-namespace Resource
+namespace Common.Resource
 {
     public class AddressablesLoader : IResourceLoader
     {

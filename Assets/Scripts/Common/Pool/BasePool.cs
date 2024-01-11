@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
+using IPoolable = Common.Pool.IPoolable;
 
-namespace UI
+namespace Common.Pool
 {
     public class BasePool : IDisposable
     {

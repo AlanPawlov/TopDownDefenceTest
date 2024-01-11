@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Resource
+namespace Common.Resource
 {
     public interface IResourceLoader
     {

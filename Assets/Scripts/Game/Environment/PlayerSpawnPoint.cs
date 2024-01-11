@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Environment
+namespace Game.Environment
 {
     public class PlayerSpawnPoint : MonoBehaviour
     {

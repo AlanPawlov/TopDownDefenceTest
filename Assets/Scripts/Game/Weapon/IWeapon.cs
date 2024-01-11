@@ -1,4 +1,6 @@
-namespace Interfaces
+using Game.Character;
+
+namespace Game.Weapon
 {
     public interface IWeapon
     {

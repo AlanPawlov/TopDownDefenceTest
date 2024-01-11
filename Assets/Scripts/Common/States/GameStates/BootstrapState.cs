@@ -1,8 +1,7 @@
 ﻿using Common.Data;
 using Common.Resource;
-using Services;
 
-namespace States.GameStates
+namespace Common.States.GameStates
 {
     public class BootstrapState : IState
     {

@@ -1,7 +1,4 @@
-using Services;
-using UnityEngine;
-
-namespace States.GameStates
+namespace Common.States.GameStates
 {
     public class GameState : IState
     {

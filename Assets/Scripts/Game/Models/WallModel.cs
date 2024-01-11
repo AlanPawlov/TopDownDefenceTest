@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Models
+namespace Game.Models
 {
     [Serializable]
     public class WallModel : BaseModel

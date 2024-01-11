@@ -1,8 +1,11 @@
 using System;
-using Models;
+using Game.Models;
 
-[Serializable]
-public class PlayerProgress : BaseModel
+namespace Common.Services
 {
-    public string Name;
+    [Serializable]
+    public class PlayerProgress : BaseModel
+    {
+        public string Name;
+    }
 }

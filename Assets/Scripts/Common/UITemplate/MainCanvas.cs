@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI
+namespace Common.UITemplate
 {
     public class MainCanvas : MonoBehaviour
     {

@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using States.GameStates;
-using UI;
-using UI.Widgets;
+using Common.States.GameStates;
+using Common.UITemplate;
+using Common.UITemplate.DefaultWidgets;
 using UnityEngine;
 using Zenject;
 
-namespace UITemplate.Windows
+namespace Game.UI.Windows
 {
     public class MainMenuWindow : InterfaceWindow
     {

@@ -1,4 +1,5 @@
-namespace States
+
+namespace Common.States
 {
     public interface IPayloadedState<TPayload> : IState
     {

@@ -1,8 +1,10 @@
+using Game.Character;
+
 namespace Common.Events.Handlers
 {
     public interface ISpawnCharacterHandler : IGlobalSubscriber
     {
-        void HandleSpawnEnemy(Character.Character character);
-        void HandleSpawnPlayer(Character.Character character);
+        void HandleSpawnEnemy(Character character);
+        void HandleSpawnPlayer(Character character);
     }
 }

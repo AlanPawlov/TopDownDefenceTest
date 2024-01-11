@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
 using Common.Events;
 using Common.Events.Handlers;
-using UI.Widgets;
+using Common.UITemplate;
+using Common.UITemplate.DefaultWidgets;
 using UnityEngine;
 
-namespace UI.Windows
+namespace Game.UI.Windows
 {
     public class HUDWindow : InterfaceWindow, IWallDamageHandler, IKillCharacterHandler
     {

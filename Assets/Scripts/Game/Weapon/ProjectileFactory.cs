@@ -2,14 +2,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Common.Data;
 using Common.Factory;
-using Models;
-using Resource;
-using UITemplate;
+using Common.Resource;
+using Game.Models;
 using UnityEngine;
-using Weapon;
 using Zenject;
 
-namespace Factories
+namespace Game.Weapon
 {
     public class ProjectileFactory : BaseFactory<GameObject>
     {

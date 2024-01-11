@@ -1,6 +1,7 @@
 using System;
+using Common.States;
 
-namespace States.SceneStates
+namespace Game.SceneStates
 {
     public abstract class BaseSceneState : IState, IDisposable
     {

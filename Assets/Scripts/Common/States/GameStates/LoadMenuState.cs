@@ -1,7 +1,6 @@
 ﻿using Common.Resource;
-using Services;
 
-namespace States.GameStates
+namespace Common.States.GameStates
 {
     public class LoadMenuState : IPayloadedState<string>
     {

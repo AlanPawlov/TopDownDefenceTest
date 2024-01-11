@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace States
+namespace Common.States
 {
     public class StateFactory
     {

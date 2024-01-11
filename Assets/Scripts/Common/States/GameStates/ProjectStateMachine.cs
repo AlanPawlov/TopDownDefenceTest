@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Zenject;
 
-namespace States.GameStates
+namespace Common.States.GameStates
 {
     public class ProjectStateMachine : IGameStateMachine, IInitializable
     {

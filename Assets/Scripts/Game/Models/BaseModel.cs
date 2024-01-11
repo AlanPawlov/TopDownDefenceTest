@@ -1,4 +1,4 @@
-namespace Models
+namespace Game.Models
 {
     public class BaseModel
     {

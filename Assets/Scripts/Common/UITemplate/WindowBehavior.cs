@@ -1,4 +1,4 @@
-namespace UI
+namespace Common.UITemplate
 {
     public enum WindowBehavior
     {

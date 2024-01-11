@@ -1,8 +1,8 @@
-﻿using States.GameStates;
+﻿using Common.States.GameStates;
 using UnityEngine;
 using Zenject;
 
-namespace Services
+namespace Common
 {
     public class ProjectBootstrap : MonoBehaviour, IInitializable
     {

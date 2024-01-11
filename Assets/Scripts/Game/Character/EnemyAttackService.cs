@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Common;
 using Common.Events;
 using Common.Events.Handlers;
-using Environment;
-using Interfaces;
+using Game.Environment;
 using UnityEngine;
 
-namespace Services
+namespace Game.Character
 {
     public class EnemyAttackService : IDeathHandler, ISpawnCharacterHandler, IDisposable
     {
@@ -34,7 +34,7 @@ namespace Services
             {
                 if (_enemies[i] == null)
                     continue;
-                var character = (Character.Character)_enemies[i];
+                var character = (global::Game.Character.Character)_enemies[i];
                 var target = (Wall)_target;
                 if (Mathf.Abs(target.transform.position.y - character.GetPosition().y) <=
                     _enemies[i].Weapon.AttackDistance)
@@ -53,19 +53,19 @@ namespace Services
             _enemies.Remove(movable);
         }
 
-        public void HandleDeath(Character.Character damageable)
+        public void HandleDeath(global::Game.Character.Character damageable)
         {
             if (_enemies.Contains(damageable))
                 Unregister(damageable);
         }
 
-        public void HandleSpawnEnemy(Character.Character character)
+        public void HandleSpawnEnemy(global::Game.Character.Character character)
         {
             if (!_enemies.Contains(character))
                 Register(character);
         }
 
-        public void HandleSpawnPlayer(Character.Character character)
+        public void HandleSpawnPlayer(global::Game.Character.Character character)
         {
         }
 

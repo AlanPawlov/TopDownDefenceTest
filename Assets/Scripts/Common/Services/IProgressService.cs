@@ -1,4 +1,4 @@
-namespace Services
+namespace Common.Services
 {
     public interface IProgressService
     {

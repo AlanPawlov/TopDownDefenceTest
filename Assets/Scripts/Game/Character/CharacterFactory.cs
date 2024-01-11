@@ -1,18 +1,15 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Character;
 using Common.Data;
 using Common.Factory;
-using Interfaces;
-using Models;
-using Resource;
-using UITemplate;
+using Common.Resource;
+using Common.Utils;
+using Game.Models;
+using Game.Weapon;
 using UnityEngine;
-using Utils;
-using Weapon;
 using Zenject;
 
-namespace Factories
+namespace Game.Character
 {
     public class CharacterFactory : BaseFactory<GameObject>
     {
@@ -29,14 +26,14 @@ namespace Factories
             _projectileModels = gameData.Projectiles;
         }
 
-        public async Task<Character.Character> Create(CharacterType characterType, string id,
+        public async Task<global::Game.Character.Character> Create(CharacterType characterType, string id,
             Vector3 position = new Vector3(),
             Quaternion rotation = new Quaternion())
         {
             var model = _characterModels[id];
             var weaponModel = _weaponModels[model.WeaponId];
             var prefab = await base.Create(model.CharacterPath.CollapseAddressablePath(), position, rotation);
-            var result = Object.Instantiate(prefab.GetComponent<Character.Character>());
+            var result = Object.Instantiate(prefab.GetComponent<global::Game.Character.Character>());
             _diContainer.Inject(result);
             var transform = result.transform;
             transform.position = position;
@@ -48,7 +45,7 @@ namespace Factories
             return result;
         }
 
-        private IWeapon SetWeapon(CharacterType characterType, Character.Character result, WeaponModel weaponModel)
+        private IWeapon SetWeapon(CharacterType characterType, global::Game.Character.Character result, WeaponModel weaponModel)
         {
             IWeapon weapon = null;
             switch (characterType)

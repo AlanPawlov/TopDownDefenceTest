@@ -1,8 +1,7 @@
-using UI;
-using UI.Windows;
-using UITemplate.Windows;
+using Common.UITemplate;
+using Game.UI.Windows;
 
-namespace States.GameStates
+namespace Common.States.GameStates
 {
     public class MenuState : IState
     {

@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using Common.Events;
 using Common.Events.Handlers;
-using Interfaces;
+using Game.Character;
 using UnityEngine;
 
-namespace Services
+namespace Common.Services
 {
     public class PlayerAttackService : IDeathHandler, ISpawnCharacterHandler,IDisposable
     {
         private UpdateSender _updateSender;
         private List<IDamageable> _enemies;
-        private Character.Character _player;
+        private Character _player;
         private bool _isWork;
 
         public PlayerAttackService(UpdateSender updateSender)
@@ -58,13 +58,13 @@ namespace Services
             _player.Attack(target);
         }
 
-        public void HandleDeath(Character.Character damageable)
+        public void HandleDeath(Character damageable)
         {
             if (_enemies.Contains(damageable))
                 Unregister(damageable);
         }
 
-        public void HandleSpawnEnemy(Character.Character character)
+        public void HandleSpawnEnemy(Character character)
         {
             if (!_enemies.Contains(character))
             {
@@ -72,7 +72,7 @@ namespace Services
             }
         }
 
-        public void HandleSpawnPlayer(Character.Character character)
+        public void HandleSpawnPlayer(Character character)
         {
             _player = character;
         }

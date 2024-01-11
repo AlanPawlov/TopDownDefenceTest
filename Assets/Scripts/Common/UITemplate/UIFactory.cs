@@ -1,11 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Common.Factory;
-using Resource;
-using UI;
+using Common.Resource;
 using UnityEngine;
 using Zenject;
 
-namespace UITemplate
+namespace Common.UITemplate
 {
     public class UIFactory : BaseFactory<BaseUIElement>
     {

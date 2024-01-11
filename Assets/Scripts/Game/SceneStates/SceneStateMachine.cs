@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
-using States.GameStates;
+using Common.States;
+using Common.States.GameStates;
 
-namespace States.SceneStates
+namespace Game.SceneStates
 {
     public class SceneStateMachine : ProjectStateMachine, IDisposable
     {

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UITemplate;
 using UnityEngine;
 using Zenject;
 
-namespace UI
+namespace Common.UITemplate
 {
     public class UIManager : IDisposable
     {

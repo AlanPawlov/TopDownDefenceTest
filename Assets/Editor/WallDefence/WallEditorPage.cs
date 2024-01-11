@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Common.Data;
 using Editor.Common;
-using Models;
+using Game.Models;
 
 namespace Editor.WallDefence
 {

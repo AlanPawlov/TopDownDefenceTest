@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
+using IPoolable = Common.Pool.IPoolable;
 
-namespace UI
+namespace Common.UITemplate
 {
     public class BaseUIElement : MonoBehaviour, IPoolable
     {

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Common;
 using Common.Events;
 using Common.Events.Handlers;
-using Interfaces;
 using UnityEngine;
 
-namespace Services
+namespace Game.Character
 {
     public class EnemyMovementService : ISpawnCharacterHandler, IDeathHandler, IDisposable
     {
@@ -41,13 +41,13 @@ namespace Services
             }
         }
 
-        public void HandleDeath(Character.Character damageable)
+        public void HandleDeath(global::Game.Character.Character damageable)
         {
             if (_enemies.Contains(damageable))
                 Unregister(damageable);
         }
 
-        public void HandleSpawnEnemy(Character.Character character)
+        public void HandleSpawnEnemy(global::Game.Character.Character character)
         {
             if (!_enemies.Contains(character))
             {
@@ -55,7 +55,7 @@ namespace Services
             }
         }
 
-        public void HandleSpawnPlayer(Character.Character character)
+        public void HandleSpawnPlayer(global::Game.Character.Character character)
         {
         }
 

@@ -1,12 +1,11 @@
 using Common.Events;
 using Common.Events.Handlers;
-using UI;
+using Common.Pool;
 using UnityEngine;
-using Weapon;
 using Zenject;
-using IPoolable = UI.IPoolable;
+using IPoolable = Common.Pool.IPoolable;
 
-namespace Pools
+namespace Game.Weapon
 {
     public class ProjectilePool : BasePool, IProjectileDeathHandler
     {

@@ -1,6 +1,6 @@
-using Services;
+using Common.Services;
 
-namespace States.GameStates
+namespace Common.States.GameStates
 {
     public class LoadProgressState : IState
     {

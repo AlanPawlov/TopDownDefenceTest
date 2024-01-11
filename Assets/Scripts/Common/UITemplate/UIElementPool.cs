@@ -1,7 +1,9 @@
+using Common.Pool;
 using UnityEngine;
 using Zenject;
+using IPoolable = Common.Pool.IPoolable;
 
-namespace UI
+namespace Common.UITemplate
 {
     public class UIElementPool : BasePool
     {

@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Common.Data;
+using Common.Utils;
 using Editor.Common;
 using Editor.Utils;
-using Models;
+using Game.Models;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
-using Utils;
 
 namespace Editor.Pages.Characters
 {

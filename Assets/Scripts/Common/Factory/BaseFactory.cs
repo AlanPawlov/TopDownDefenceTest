@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Resource;
+using Common.Resource;
 using UnityEngine;
 using Zenject;
 

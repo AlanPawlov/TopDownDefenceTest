@@ -1,6 +1,6 @@
-using Interfaces;
+using Game.Character;
 
-namespace Weapon
+namespace Game.Weapon
 {
     public class BaseWeapon : IWeapon
     {

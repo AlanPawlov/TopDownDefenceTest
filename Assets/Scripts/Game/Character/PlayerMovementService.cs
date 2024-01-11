@@ -1,15 +1,15 @@
 using System;
+using Common;
 using Common.Events;
 using Common.Events.Handlers;
-using Interfaces;
 using UnityEngine;
 
-namespace Services
+namespace Game.Character
 {
     public class PlayerMovementService : IDisposable, ISpawnCharacterHandler, IDeathHandler
     {
         private UpdateSender _updateSender;
-        private Character.Character _player;
+        private global::Game.Character.Character _player;
         private Vector2 _direction;
 
         public PlayerMovementService(UpdateSender updateSender)
@@ -33,7 +33,7 @@ namespace Services
 
         public void Register(IMovable movable)
         {
-            _player = (Character.Character)movable;
+            _player = (global::Game.Character.Character)movable;
         }
 
         public void Unregister(IMovable movable)
@@ -48,17 +48,17 @@ namespace Services
             _player.Move(_direction);
         }
 
-        public void HandleDeath(Character.Character damageable)
+        public void HandleDeath(global::Game.Character.Character damageable)
         {
             if (damageable == _player)
                 Unregister(damageable);
         }
 
-        public void HandleSpawnEnemy(Character.Character character)
+        public void HandleSpawnEnemy(global::Game.Character.Character character)
         {
         }
 
-        public void HandleSpawnPlayer(Character.Character character)
+        public void HandleSpawnPlayer(global::Game.Character.Character character)
         {
             Register(character);
         }

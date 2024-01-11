@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Resource;
+using Common.Resource;
 using UnityEngine;
 
-namespace Services
+namespace Game.Environment
 {
     public class LevelBorderHelper
     {
@@ -22,7 +22,7 @@ namespace Services
             if (_prefab != null)
                 return;
 
-            var camera = Camera.main;
+            var camera = UnityEngine.Camera.main;
             _prefab = await _resourceLoader.Load<GameObject>("Border");
             var leftBorderMax = camera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
             var rightBorderMax = camera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;

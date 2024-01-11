@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
 using Common.Events;
 using Common.Events.Handlers;
-using Interfaces;
-using UI;
+using Common.Pool;
+using Game.Character;
 using UnityEngine;
 
-namespace Weapon
+namespace Game.Weapon
 {
     public class Projectile : MonoBehaviour, IPoolable
     {

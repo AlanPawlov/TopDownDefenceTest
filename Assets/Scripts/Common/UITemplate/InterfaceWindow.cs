@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace Common.UITemplate
 {
     public class InterfaceWindow : BaseUIElement
     {

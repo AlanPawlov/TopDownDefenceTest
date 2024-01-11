@@ -2,18 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Character;
+using Common;
 using Common.Data;
 using Common.Events;
 using Common.Events.Handlers;
-using Environment;
-using Factories;
-using Models;
-using Pools;
+using Game.Character;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Services
+namespace Game.Environment
 {
     public class EnemySpawner : IDisposable, IDeathHandler
     {

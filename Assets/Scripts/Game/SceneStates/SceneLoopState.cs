@@ -2,12 +2,14 @@ using System.Linq;
 using Common.Data;
 using Common.Events;
 using Common.Events.Handlers;
-using Services;
-using UI;
-using UI.Windows;
+using Common.States;
+using Common.UITemplate;
+using Game.Character;
+using Game.Environment;
+using Game.UI.Windows;
 using UnityEngine;
 
-namespace States.SceneStates
+namespace Game.SceneStates
 {
     public class SceneLoopState : BaseSceneState, IKillCharacterHandler, IWallDestroyedHandler
     {

@@ -1,8 +1,9 @@
-using Factories;
-using Pools;
-using Services;
-using States;
-using States.SceneStates;
+using Common.Services;
+using Common.States;
+using Game.Character;
+using Game.Environment;
+using Game.SceneStates;
+using Game.Weapon;
 using Zenject;
 
 namespace Installers

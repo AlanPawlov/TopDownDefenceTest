@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Resource
+namespace Common.Resource
 {
     public class ResourceLoader : IResourceLoader
     {

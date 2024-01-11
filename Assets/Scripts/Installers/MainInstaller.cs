@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Common;
 using Common.Data;
 using Common.Resource;
-using Models;
-using Resource;
-using Services;
-using States;
-using States.GameStates;
-using UI;
-using UITemplate;
+using Common.Services;
+using Common.States;
+using Common.States.GameStates;
+using Common.UITemplate;
 using UnityEngine;
 using Zenject;
 

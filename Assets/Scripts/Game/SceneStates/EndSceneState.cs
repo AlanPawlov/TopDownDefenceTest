@@ -1,8 +1,9 @@
 using Common.Events;
 using Common.Events.Handlers;
-using Services;
+using Common.States;
+using Game.Environment;
 
-namespace States.SceneStates
+namespace Game.SceneStates
 {
     public class EndSceneState : BaseSceneState, IRestartMatchHandler
     {

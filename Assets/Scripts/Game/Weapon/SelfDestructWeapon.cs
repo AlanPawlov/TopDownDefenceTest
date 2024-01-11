@@ -1,11 +1,11 @@
-using Interfaces;
-using Models;
+using Game.Character;
+using Game.Models;
 
-namespace Weapon
+namespace Game.Weapon
 {
     public class SelfDestructWeapon : BaseWeapon
     {
-        public SelfDestructWeapon(Character.Character owner, WeaponModel weaponModel) : base(owner)
+        public SelfDestructWeapon(global::Game.Character.Character owner, WeaponModel weaponModel) : base(owner)
         {
             _attackDistance = weaponModel.Range;
             _damage = weaponModel.Damage;

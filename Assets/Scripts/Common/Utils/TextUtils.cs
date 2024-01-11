@@ -1,12 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Models;
+using Game.Models;
 using Newtonsoft.Json;
 
-namespace Utils
+namespace Common.Utils
 {
     public static class TextUtils
     {
+        public static readonly JsonSerializerSettings SerializerSettings = new()
+        {
+            TypeNameHandling = TypeNameHandling.Auto,
+            Formatting = Formatting.Indented
+        };
+
         public static string DictionariesPath
         {
             get
@@ -42,7 +48,7 @@ namespace Utils
             var json = JsonConvert.SerializeObject(data, SerializerSettings);
             File.WriteAllText(GetConfigPath<T>(), json);
         }
-        
+
         public static void Save<T>(T data)
         {
             File.WriteAllText(GetConfigPath<T>(),
@@ -62,10 +68,7 @@ namespace Utils
                 return result;
 
             var json = JsonConvert.DeserializeObject<List<T>>(jsonData);
-            foreach (var item in json)
-            {
-                result.Add(item.Id, item);
-            }
+            foreach (var item in json) result.Add(item.Id, item);
 
             return result;
         }
@@ -96,21 +99,15 @@ namespace Utils
                 if (!File.Exists(path))
                     Directory.CreateDirectory(path);
 
-            return new StreamWriter(filePath, append: append);
+            return new StreamWriter(filePath, append);
         }
 
-        public static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings
-        {
-            TypeNameHandling = TypeNameHandling.Auto,
-            Formatting = Formatting.Indented
-        };
-        
         public static string CollapseAddressablePath(this string str)
         {
             var strWithoutPath = str.Substring(str.LastIndexOf("/") + 1);
-            var strWithoutExtension = strWithoutPath.Replace(strWithoutPath.Substring(strWithoutPath.LastIndexOf(".")), "");
+            var strWithoutExtension =
+                strWithoutPath.Replace(strWithoutPath.Substring(strWithoutPath.LastIndexOf(".")), "");
             return strWithoutExtension;
         }
-
     }
 }

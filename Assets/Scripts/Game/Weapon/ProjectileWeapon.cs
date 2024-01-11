@@ -1,12 +1,10 @@
-﻿using Factories;
-using Interfaces;
-using Models;
-using Pools;
+﻿using Common.Utils;
+using Game.Character;
+using Game.Models;
 using UnityEngine;
-using Utils;
 using Zenject;
 
-namespace Weapon
+namespace Game.Weapon
 {
     public class ProjectileWeapon : BaseWeapon
     {

@@ -2,11 +2,11 @@ using System.Linq;
 using Common.Data;
 using Common.Events;
 using Common.Events.Handlers;
-using Interfaces;
+using Game.Character;
 using UnityEngine;
 using Zenject;
 
-namespace Environment
+namespace Game.Environment
 {
     public class Wall : MonoBehaviour, IDamageable, IRestartMatchHandler
     {

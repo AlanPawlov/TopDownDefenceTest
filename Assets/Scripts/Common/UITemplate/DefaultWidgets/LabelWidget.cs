@@ -1,8 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace UI.Widgets
+namespace Common.UITemplate.DefaultWidgets
 {
     public class LabelWidget : BaseUIElement
     {

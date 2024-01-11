@@ -1,4 +1,4 @@
-namespace States
+namespace Common.States
 {
     public interface IGameStateMachine
     {

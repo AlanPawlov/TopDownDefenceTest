@@ -1,7 +1,7 @@
 ﻿using Common.Data;
 using Editor.Common;
 using Editor.Utils;
-using Models;
+using Game.Models;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;

@@ -1,8 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Services;
+using Common.States;
+using Game.Environment;
 
-namespace States.SceneStates
+namespace Game.SceneStates
 {
     public class InitSceneState : BaseSceneState
     {
