@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Data;
+using Common.Data;
 using Editor.Common;
 using Editor.Pages.Characters;
 using Editor.Pages.Weapon;
