@@ -1,4 +1,4 @@
-using Data;
+using Common.Data;
 
 namespace Editor.Common
 {

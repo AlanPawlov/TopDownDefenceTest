@@ -524,6 +524,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5884907029555262420, guid: df6410e728f9fc640a38b628f43b426a, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 247
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Models;
+using Common.Utils;
+using Game.Models;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEngine;
-using Utils;
 using Random = UnityEngine.Random;
 
 namespace Editor.Utils

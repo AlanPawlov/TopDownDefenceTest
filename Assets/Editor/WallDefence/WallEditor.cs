@@ -1,6 +1,6 @@
-﻿using Data;
+﻿using Common.Data;
 using Editor.Common;
-using Models;
+using Game.Models;
 using Sirenix.OdinInspector;
 
 namespace Editor.WallDefence

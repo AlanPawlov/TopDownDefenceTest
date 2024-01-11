@@ -1,4 +1,4 @@
-﻿using Environment;
+﻿using Game.Environment;
 using UnityEngine;
 using Zenject;
 

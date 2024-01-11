@@ -1,0 +1,7 @@
+﻿namespace Common.Events.Handlers
+{
+    public interface IWallDestroyedHandler : IGlobalSubscriber
+    {
+        void HandleWallDestroyed();
+    }
+}
