@@ -19,9 +19,9 @@ namespace Game.UI.Windows
         {
             base.Init();
             _healthCounter =
-                await CreateChild<LabelWidget>(UIResourceMap.WidgetMap.DefaultLabelWidget, _healthCounterContainer);
+                await CreateChild<LabelWidget>(UIResourceMap.WidgetMap.DefaultLabel, _healthCounterContainer);
             _enemyCounter =
-                await CreateChild<LabelWidget>(UIResourceMap.WidgetMap.DefaultLabelWidget, _enemyCounterContainer);
+                await CreateChild<LabelWidget>(UIResourceMap.WidgetMap.DefaultLabel, _enemyCounterContainer);
             EventBus.Subscribe(this);
         }
 
