@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 
 namespace Common.GameSetting
@@ -55,15 +54,14 @@ namespace Common.GameSetting
             SaveChanges();
         }
 
-        public async void UpdateVolume()
+        public void UpdateVolume()
         {
-            //TODO: на этапе инжекции аудиомиксер не успевает применить значения
-            //для решения нужно применять настройки в бутстрап стейте, через Init, а не через конструктор и убрать это ожидание
-            await Task.Delay(1000);
-            _audioMixer.SetFloat(KEY_MASTER_VOLUME, Mathf.Log10(MasterVolume) * 20);
-            _audioMixer.SetFloat(KEY_MUSIC_VOLUME, Mathf.Log10(MusicVolume) * 20);
-            _audioMixer.SetFloat(KEY_EFFECTS_VOLUME, Mathf.Log10(EffectsVolume) * 20);
+            _audioMixer.SetFloat(KEY_MASTER_VOLUME, DenormalizeVolume(MasterVolume));
+            _audioMixer.SetFloat(KEY_MUSIC_VOLUME, DenormalizeVolume(MusicVolume));
+            _audioMixer.SetFloat(KEY_EFFECTS_VOLUME, DenormalizeVolume(EffectsVolume));
         }
+
+        private float DenormalizeVolume(float volume) => Mathf.Log10(volume) * 20;
 
         public void SaveChanges()
         {

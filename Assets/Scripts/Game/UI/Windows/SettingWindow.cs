@@ -48,13 +48,17 @@ namespace Game.UI.Windows
 
             _mainAudioVolumeSlider = await CreateChild<SliderInputWidget>(UIResourceMap.WidgetMap.SliderInputWidget,
                 _mainAudioVolumeSliderContainer);
-            _mainAudioVolumeSlider.Clamp(0.001f, 1);
+            _mainAudioVolumeSlider.Clamp(0, 100);
             _musicAudioVolumeSlider = await CreateChild<SliderInputWidget>(UIResourceMap.WidgetMap.SliderInputWidget,
                 _musicAudioVolumeSliderContainer);
-            _musicAudioVolumeSlider.Clamp(0.001f, 1);
+            _musicAudioVolumeSlider.Clamp(0, 100);
             _sfxAudioVolumeSlider = await CreateChild<SliderInputWidget>(UIResourceMap.WidgetMap.SliderInputWidget,
                 _sfxAudioVolumeSliderContainer);
-            _sfxAudioVolumeSlider.Clamp(0.001f, 1);
+            _sfxAudioVolumeSlider.Clamp(0, 100);
+
+            _mainAudioVolumeSlider.ChangeMode(isInteger: true);
+            _musicAudioVolumeSlider.ChangeMode(isInteger: true);
+            _sfxAudioVolumeSlider.ChangeMode(isInteger: true);
 
             _localizationWidget.SetData(OnChangeLanguageClick, OnChangeLanguageClick, _gameSetting.Language);
             LoadUserPreferences();
@@ -89,10 +93,10 @@ namespace Game.UI.Windows
 
         private void ApplyChanges()
         {
-            _gameSetting.MasterVolume = _mainAudioVolumeSlider.Value;
-            _gameSetting.MusicVolume = _musicAudioVolumeSlider.Value;
-            _gameSetting.EffectsVolume = _sfxAudioVolumeSlider.Value;
             var languages = new[] { "eng", "ru" };
+            _gameSetting.MasterVolume = _mainAudioVolumeSlider.Value / 100;
+            _gameSetting.MusicVolume = _musicAudioVolumeSlider.Value / 100;
+            _gameSetting.EffectsVolume = _sfxAudioVolumeSlider.Value / 100;
             _gameSetting.Language = languages[_curLanguage];
             _gameSetting.UpdateVolume();
             _gameSetting.SaveChanges();
@@ -101,9 +105,10 @@ namespace Game.UI.Windows
 
         private void LoadUserPreferences()
         {
-            _mainAudioVolumeSlider.SetValue(_gameSetting.Options.GetFloat(GameSetting.KEY_MASTER_VOLUME));
-            _musicAudioVolumeSlider.SetValue(_gameSetting.Options.GetFloat(GameSetting.KEY_MUSIC_VOLUME));
-            _sfxAudioVolumeSlider.SetValue(_gameSetting.Options.GetFloat(GameSetting.KEY_EFFECTS_VOLUME));
+            var format = "F0";
+            _mainAudioVolumeSlider.SetValue(_gameSetting.Options.GetFloat(GameSetting.KEY_MASTER_VOLUME) * 100, format);
+            _musicAudioVolumeSlider.SetValue(_gameSetting.Options.GetFloat(GameSetting.KEY_MUSIC_VOLUME) * 100, format);
+            _sfxAudioVolumeSlider.SetValue(_gameSetting.Options.GetFloat(GameSetting.KEY_EFFECTS_VOLUME) * 100, format);
         }
 
         public override void Uninit()

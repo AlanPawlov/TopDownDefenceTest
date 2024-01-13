@@ -42,14 +42,13 @@ namespace Game.UI.Windows
 
         private async void OnSettingButtonClick()
         {
+            Close();
             var setting =
                 await _uiManager.CreateWindow<SettingWindow>(UIResourceMap.WindowMap.SettingWindow,
                     WindowBehavior.Exclusive);
-
             setting.SetData(() =>
                 _uiManager.CreateWindow<MainMenuWindow>(UIResourceMap.WindowMap.MainMenuWindow,
                     WindowBehavior.Exclusive));
-            Close();
         }
 
         private void OnPlayButtonClick()

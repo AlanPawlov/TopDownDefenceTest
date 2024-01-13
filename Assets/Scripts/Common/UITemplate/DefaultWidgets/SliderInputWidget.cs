@@ -11,6 +11,7 @@ namespace Common.UITemplate.DefaultWidgets
         [SerializeField] private TMP_InputField _inputField;
         [SerializeField] private float _upperLimit = 100f;
         [SerializeField] private float _lowerLimit = 0;
+        private string _format;
 
         public float Value => _slider.value;
 
@@ -30,14 +31,15 @@ namespace Common.UITemplate.DefaultWidgets
             _slider.maxValue = _upperLimit;
         }
 
-        public void SetValue(float value)
+        public void SetValue(float value, string format = "F1")
         {
+            _format = format;
             _slider.minValue = _lowerLimit;
             _slider.maxValue = _upperLimit;
 
             value = Mathf.Clamp(value, _lowerLimit, _upperLimit);
             _slider.value = value;
-            _inputField.text = value.ToString();
+            _inputField.text = value.ToString(format);
         }
 
         private void OnInputFieldValueChanged(string text)
@@ -50,7 +52,7 @@ namespace Common.UITemplate.DefaultWidgets
 
         private void OnSliderValueChanged(float value)
         {
-            _inputField.text = _slider.value.ToString();
+            _inputField.text = _slider.value.ToString(_format);
         }
 
         public void ChangeMode(bool isInteger)
