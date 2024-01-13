@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Game.Models;
+using Common.Data;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace Common.Utils
 {
@@ -17,13 +18,11 @@ namespace Common.Utils
         {
             get
             {
-#if UNITY_EDITOR
-                return "Assets/GameData";
-#elif UNITY_STANDALONE || UNITY_SERVER
-                return Application.streamingAssetsPath;
-#elif UNITY_ANDROID
+// #if UNITY_EDITOR
+//                 return "Assets/GameData";
+// #elif UNITY_ANDROID
                 return Application.persistentDataPath;
-#endif
+// #endif
             }
         }
 
@@ -42,19 +41,7 @@ namespace Common.Utils
             var path = Path.Combine(DictionariesPath, $"{typeof(T).Name}.json");
             return path;
         }
-
-        public static void Save<T>(List<T> data)
-        {
-            var json = JsonConvert.SerializeObject(data, SerializerSettings);
-            File.WriteAllText(GetConfigPath<T>(), json);
-        }
-
-        public static void Save<T>(T data)
-        {
-            File.WriteAllText(GetConfigPath<T>(),
-                JsonConvert.SerializeObject(data, SerializerSettings));
-        }
-
+        
         public static bool IsLoadedToLocalStorage<T>()
         {
             var path = GetConfigPath<T>();
@@ -79,29 +66,11 @@ namespace Common.Utils
             return data;
         }
 
-        public static List<T> SaveAsList<T>(string jsonData) where T : BaseModel
-        {
-            var fromJson = JsonConvert.DeserializeObject<List<T>>(jsonData);
-            Save(fromJson);
-            return fromJson;
-        }
-
         public static void Save<T>(string jsonData)
         {
             File.WriteAllText(GetConfigPath<T>(), jsonData);
         }
-
-        public static StreamWriter GetFileWriterStream(string path, string fileName, bool append)
-        {
-            var filePath = Path.Combine(path, fileName);
-
-            if (!File.Exists(filePath))
-                if (!File.Exists(path))
-                    Directory.CreateDirectory(path);
-
-            return new StreamWriter(filePath, append);
-        }
-
+        
         public static string CollapseAddressablePath(this string str)
         {
             var strWithoutPath = str.Substring(str.LastIndexOf("/") + 1);

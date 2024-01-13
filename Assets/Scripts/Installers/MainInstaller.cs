@@ -6,6 +6,7 @@ using Common.Services;
 using Common.States;
 using Common.States.GameStates;
 using Common.UITemplate;
+using Common.WebRequest;
 using UnityEngine;
 using Zenject;
 
@@ -22,6 +23,7 @@ namespace Installers
         public override void InstallBindings()
         {
             RegisterGameData();
+            RegisterGameDataLoader();
             RegisterUpdateSender();
             RegisterMainCanvas();
             RegisterProjectStateMachine();
@@ -36,6 +38,22 @@ namespace Installers
             ResgisterStatesFactory();
             RegisterGameSetting();
             RegisterGlobalSetting();
+            RigisterWebRequestSender();
+        }
+
+        private void RegisterGameDataLoader()
+        {
+            Container
+                .Bind<GameDataLoader>()
+                .FromNew()
+                .AsSingle();
+        }
+
+        private void RigisterWebRequestSender()
+        {
+            Container.Bind<WebRequestSender>()
+                .FromNew()
+                .AsSingle();
         }
 
         private void RegisterGlobalSetting()

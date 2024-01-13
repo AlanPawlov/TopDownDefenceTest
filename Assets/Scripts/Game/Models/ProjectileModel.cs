@@ -1,4 +1,5 @@
 using System;
+using Common.Data;
 
 namespace Game.Models
 {
