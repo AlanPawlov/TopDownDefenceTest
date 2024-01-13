@@ -1,5 +1,6 @@
 ﻿using Common;
 using Common.Data;
+using Common.GameSetting;
 using Common.Resource;
 using Common.Services;
 using Common.States;
@@ -15,6 +16,7 @@ namespace Installers
         [SerializeField] private UpdateSender _updateSender;
         [SerializeField] private MainCanvas _globalCanvas;
         [SerializeField] private ProjectBootstrap _projectBootstrap;
+        [SerializeField] private GlobalSettings _globalSettings;
         private GameData _gameData;
 
         public override void InstallBindings()
@@ -32,6 +34,24 @@ namespace Installers
             RegisterUIFactory();
             RegisterStates();
             ResgisterStatesFactory();
+            RegisterGameSetting();
+            RegisterGlobalSetting();
+        }
+
+        private void RegisterGlobalSetting()
+        {
+            Container.Bind<GlobalSettings>()
+                .FromInstance(_globalSettings)
+                .AsSingle()
+                .NonLazy();
+        }
+
+
+        private void RegisterGameSetting()
+        {
+            Container.Bind<GameSetting>()
+                .FromNew()
+                .AsSingle();
         }
 
         private void RegisterInitializable()
@@ -134,7 +154,7 @@ namespace Installers
                 .Bind<BootstrapState>()
                 .AsSingle()
                 .NonLazy();
-            
+
             Container
                 .Bind<GameState>()
                 .AsSingle()

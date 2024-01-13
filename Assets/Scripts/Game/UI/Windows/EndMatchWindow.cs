@@ -18,12 +18,12 @@ namespace Game.UI.Windows
         {
             base.Init();
             _restartButton =
-                await CreateChild<ButtonWidget>(UIResourceMap.WidgetMap.DefaultButtonWidget, _restartButtonContainer);
+                await CreateChild<ButtonWidget>(UIResourceMap.WidgetMap.DefaultButton, _restartButtonContainer);
             _restartButton.SetData("Restart");
             _restartButton.SetData(OnRestartButtonClick);
 
             _headerText =
-                await CreateChild<LabelWidget>(UIResourceMap.WidgetMap.DefaultLabelWidget, _headerTextContainer);
+                await CreateChild<LabelWidget>(UIResourceMap.WidgetMap.DefaultLabel, _headerTextContainer);
         }
 
         private void OnRestartButtonClick()

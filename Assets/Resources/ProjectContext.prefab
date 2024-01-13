@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 541098182261396278}
   - component: {fileID: -2401534323052988666}
   - component: {fileID: 3380421696120516226}
+  - component: {fileID: -6115374863148999407}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
+  - {fileID: -6115374863148999407}
   - {fileID: -2401534323052988666}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 0
@@ -77,13 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _updateSender: {fileID: 4018231684063488239, guid: 4322d8fa31d29924fad5c94a96abd623, type: 3}
   _globalCanvas: {fileID: 8446445449185705397, guid: 33084da8ede7ecc4587c5f1ea628c1cb, type: 3}
-  _weapons: {fileID: 11400000, guid: e5c3ca689afccd240aaea51a5713b1ad, type: 2}
-  _characters: {fileID: 11400000, guid: a947f66da5f0eb34bb780e407c74e58b, type: 2}
-  _spawners: {fileID: 11400000, guid: c6d6054e1bf24b34ca0499b15ab673fa, type: 2}
-  _walls: {fileID: 11400000, guid: e8de86e1079c21d43bd0b54d7908fb12, type: 2}
-  _projectiles: {fileID: 11400000, guid: aa62853dd84e5ee458df8ae64899ba57, type: 2}
-  _setting: {fileID: 11400000, guid: e2908ab8ac41fb443838a8fdc7b247ed, type: 2}
   _projectBootstrap: {fileID: 3380421696120516226}
+  _globalSettings: {fileID: 11400000, guid: bc2a1d94df765f74fabcb448791aeffb, type: 2}
 --- !u!114 &3380421696120516226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,3 +93,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625a2ad123cb49fabeaa6427d6c9ca33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6115374863148999407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835721690199324667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa834bf97804e2381cabec7f20cdd11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24100000, guid: 8404cf928b5f4234b8794680109e379b, type: 2}

@@ -42,6 +42,31 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a897e802226f4a345b8d41933b976865
+    m_Address: SettingWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 379d51cd2a22ee04389c3afc7d00cc95
+    m_Address: SliderInputWidget
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1955b8c973ee6f74f8aa49df6950fe99
+    m_Address: ButtonSwitchWidget
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab52d6eb2ee64bb428606f8cbf35b39e
+    m_Address: ArrowButton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26dee29010e8471458645e019e24a70e
+    m_Address: CloseButton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 060af3b0d36e4f04aa6f71227c0412fb, type: 2}
   m_SchemaSet:

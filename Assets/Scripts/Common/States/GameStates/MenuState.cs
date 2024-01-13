@@ -18,7 +18,7 @@ namespace Common.States.GameStates
 
         public void EnterState()
         {
-            _uiManager.CreateWindow<MainMenuWindow>(UIResourceMap.WindowMap.MainMenu, WindowBehavior.Exclusive);
+            _uiManager.CreateWindow<MainMenuWindow>(UIResourceMap.WindowMap.MainMenuWindow, WindowBehavior.Exclusive);
         }
     }
 }

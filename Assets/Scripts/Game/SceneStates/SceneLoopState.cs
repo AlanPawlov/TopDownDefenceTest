@@ -40,7 +40,7 @@ namespace Game.SceneStates
         {
             _targetKill = Random.Range(_minKill, _maxKill + 1);
             _hudWindow =
-                await _uiManager.CreateWindow<HUDWindow>(UIResourceMap.WindowMap.HUD, WindowBehavior.Exclusive);
+                await _uiManager.CreateWindow<HUDWindow>(UIResourceMap.WindowMap.HUDWindow, WindowBehavior.Exclusive);
             _hudWindow.SetData(_targetKill, _walllHealth);
             EventBus.Subscribe(this);
             _playerMovementService.StartWork();
@@ -72,7 +72,7 @@ namespace Game.SceneStates
         private async void EndMatch(bool isWin)
         {
             var endGameWindow =
-                await _uiManager.CreateWindow<EndMatchWindow>(UIResourceMap.WindowMap.EndGame,
+                await _uiManager.CreateWindow<EndMatchWindow>(UIResourceMap.WindowMap.EndGameWindow,
                     WindowBehavior.Exclusive);
             endGameWindow.SetData(isWin);
             StateMachine.StartState<EndSceneState>();
