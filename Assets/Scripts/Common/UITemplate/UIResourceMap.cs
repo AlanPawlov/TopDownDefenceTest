@@ -8,6 +8,7 @@
             public static string MainMenuWindow = "MainMenuWindow";
             public static string EndGameWindow = "EndGameWindow";
             public static string SettingWindow = "SettingWindow";
+            public static string MobileInputWindow = "MobileInputWindow";
         }
 
         public static class WidgetMap

@@ -1,6 +1,7 @@
 ﻿using Common.Data;
 using Common.Resource;
 using Common.WebRequest;
+using Game.Input;
 
 namespace Common.States.GameStates
 {
@@ -13,9 +14,10 @@ namespace Common.States.GameStates
         private readonly GameSetting.GameSetting _gameSetting;
         private readonly WebRequestSender _webRequestSender;
         private readonly GameDataLoader _gameDataLoader;
-
+        private readonly IInputService _inputService;
+    
         public BootstrapState(ProjectStateMachine projectStateMachine, GameData gameData,GameDataLoader gameDataLoader,
-            SceneLoader sceneLoader, GameSetting.GameSetting gameSetting,WebRequestSender webRequestSender)
+            SceneLoader sceneLoader, GameSetting.GameSetting gameSetting,WebRequestSender webRequestSender,IInputService inputService)
         {
             _stateMachine = projectStateMachine;
             _gameDataLoader = gameDataLoader;
@@ -23,6 +25,7 @@ namespace Common.States.GameStates
             _sceneLoader = sceneLoader;
             _gameSetting = gameSetting;
             _webRequestSender = webRequestSender;
+            _inputService = inputService;
         }
 
         public void EnterState()
@@ -36,6 +39,7 @@ namespace Common.States.GameStates
             _gameData.Init();
             _gameSetting.Init();
             _stateMachine.StartState<LoadProgressState>();
+            _inputService.Init();
         }
 
         public void ExitState()

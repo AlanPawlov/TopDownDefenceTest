@@ -7,6 +7,7 @@ using Common.States;
 using Common.States.GameStates;
 using Common.UITemplate;
 using Common.WebRequest;
+using Game.Input.Mobile;
 using UnityEngine;
 using Zenject;
 
@@ -39,6 +40,7 @@ namespace Installers
             RegisterGameSetting();
             RegisterGlobalSetting();
             RigisterWebRequestSender();
+            RegisterInput();
         }
 
         private void RegisterGameDataLoader()
@@ -166,6 +168,7 @@ namespace Installers
         }
 
         //тут non lazy для того чтобы в фабрике стейтов всё было создано
+
         private void RegisterStates()
         {
             Container
@@ -197,6 +200,13 @@ namespace Installers
                 .Bind<LoadMenuState>()
                 .AsSingle()
                 .NonLazy();
+        }
+
+        private void RegisterInput()
+        {
+            Container
+                .BindInterfacesAndSelfTo<MobileInputService>()
+                .AsSingle();
         }
     }
 }
