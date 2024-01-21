@@ -5,7 +5,7 @@ using Game.Environment;
 
 namespace Game.SceneStates
 {
-    public class EndSceneState : BaseSceneState, IRestartMatchHandler
+    public class EndSceneState : BaseSceneState,IRestartMatchHandler
     {
         private readonly PlayerSpawner _playerSpawner;
         private readonly EnemySpawner _enemySpawner;
