@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 0fb4355e0a8246147a50d1b642e2e981
   m_currentHash:
     serializedVersion: 2
-    Hash: 8a6e25cc8b77857632a508b25daef794
+    Hash: d4cf965cea62c4cb3fc1f349920aff43
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
     m_Id: 
   m_RemoteCatalogLoadPath:
     m_Id: 
-  m_ContentStateBuildPathProfileVariableName: 
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
@@ -68,6 +68,20 @@ MonoBehaviour:
         m_Value: ServerData/[BuildTarget]
       - m_Id: c37b18796a959b94695da93618a202c2
         m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+    - m_InheritedParent: 
+      m_Id: 596ad9e570f33d543a78f07f0b47a609
+      m_ProfileName: RemoteProfile
+      m_Values:
+      - m_Id: 860cfe6a3a9764945908fd5daf30c868
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: 68fb4c86fbfe3824a9465ced04096782
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: 5646f60298dbad745b6efd1ec551c193
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: 55522eb359c1afd4c87a90c14fd85dc9
+        m_Value: ServerData/[BuildTarget]
+      - m_Id: c37b18796a959b94695da93618a202c2
+        m_Value: http://alanpaxc.beget.tech/OtherConfig/TopDown/Bundles/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 860cfe6a3a9764945908fd5daf30c868
       m_Name: BuildTarget
@@ -101,7 +115,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2cee64dffab995f47a8c9ded9e4bc02e, type: 2}
   - {fileID: 11400000, guid: 37b8e0ff17e417546ba6ddfe127add49, type: 2}
   - {fileID: 11400000, guid: 2b0d32df09ec41f4aa2372192fe9183a, type: 2}
-  m_ActiveProfileId: c510326dab7f9d7488cab5e8515a6184
+  m_ActiveProfileId: 596ad9e570f33d543a78f07f0b47a609
   m_HostingServicesManager:
     m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}
