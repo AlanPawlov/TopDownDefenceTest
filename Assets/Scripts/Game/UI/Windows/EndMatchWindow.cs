@@ -44,13 +44,14 @@ namespace Game.UI.Windows
 
         private void OnMenuButtonClick()
         {
+            Close();
             _projectStateMachine.StartState<LoadMenuState, string>("MainMenu");
         }
 
         private void OnRestartButtonClick()
         {
             EventBus.RaiseEvent<IRestartMatchHandler>(h => h.HandleRestart());
-            Uninit();
+            Close();
         }
 
         public void SetData(bool isWin)

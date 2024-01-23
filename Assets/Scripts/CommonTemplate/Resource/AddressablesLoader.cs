@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CommonTemplate.UITemplate;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
@@ -17,7 +19,7 @@ namespace CommonTemplate.Resource
             _handles = new Dictionary<string, List<AsyncOperationHandle>>();
             Addressables.InitializeAsync();
         }
-        
+
         public async Task<T> Load<T>(string resource) where T : Object
         {
             if (_cache.TryGetValue(resource, out AsyncOperationHandle completedHandle))
@@ -49,14 +51,17 @@ namespace CommonTemplate.Resource
 
         public void Release()
         {
-            foreach (List<AsyncOperationHandle> resourceHandles in _handles.Values)
+            foreach (var handles in _handles)
             {
-                foreach (AsyncOperationHandle handle in resourceHandles)
+                if (handles.Key == UIResourceMap.WindowMap.LoadingWindow)
+                    continue;
+                
+                foreach (AsyncOperationHandle handle in handles.Value)
                 {
                     Addressables.Release(handle);
                 }
             }
-
+            
             _cache.Clear();
             _handles.Clear();
         }

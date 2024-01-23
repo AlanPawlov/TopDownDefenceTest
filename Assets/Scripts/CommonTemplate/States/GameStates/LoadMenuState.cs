@@ -1,4 +1,5 @@
-﻿using CommonTemplate.Resource;
+﻿using System.Threading.Tasks;
+using CommonTemplate.Resource;
 using CommonTemplate.UITemplate;
 using CommonTemplate.UITemplate.DefaultWindows;
 
@@ -24,8 +25,7 @@ namespace CommonTemplate.States.GameStates
         public async void EnterState(string sceneName)
         {
             _resourceLoader.Release();
-            _loadingWindow =
-                await _uiManager.CreateGlobalWindow<LoadingWindow>(UIResourceMap.WindowMap.LoadingWindow);
+            _loadingWindow = await _uiManager.CreateGlobalWindow<LoadingWindow>(UIResourceMap.WindowMap.LoadingWindow);
             _sceneLoader.Load(sceneName, OnSceneLoaded, OnUpdateProgress).Forget();
         }
 
@@ -40,7 +40,7 @@ namespace CommonTemplate.States.GameStates
 
         public void ExitState()
         {
-            _loadingWindow?.Close();
+            _loadingWindow.Close();
             _loadingWindow = null;
         }
 

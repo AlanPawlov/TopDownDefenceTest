@@ -206,6 +206,10 @@ namespace Installers
 
         private void RegisterInput()
         {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            _isMobileInput = true;
+#endif
+
             if (_isMobileInput)
             {
                 Container

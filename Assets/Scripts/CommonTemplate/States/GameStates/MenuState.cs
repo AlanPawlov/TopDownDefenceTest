@@ -12,13 +12,13 @@ namespace CommonTemplate.States.GameStates
             _uiManager = uiManager;
         }
 
-        public void ExitState()
-        {
-        }
-
         public void EnterState()
         {
             _uiManager.CreateWindow<MainMenuWindow>(UIResourceMap.WindowMap.MainMenuWindow, WindowBehavior.Exclusive);
+        }
+
+        public void ExitState()
+        {
         }
     }
 }
