@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Common;
-using Common.Data;
-using Common.Events;
-using Common.Events.Handlers;
+using CommonTemplate;
+using CommonTemplate.Data;
+using CommonTemplate.Events;
+using CommonTemplate.Events.Handlers;
 using Game.Character;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -96,6 +96,12 @@ namespace Game.Environment
             }
         }
 
+        public void HandleDeath(Character.Character character)
+        {
+            if (_characters.Contains(character))
+                _characters.Remove(character);
+        }
+
         public void Dispose()
         {
             EventBus.Unsubscribe(this);
@@ -104,12 +110,6 @@ namespace Game.Environment
             _factory = null;
             _spawnPoints = null;
             _isWork = false;
-        }
-
-        public void HandleDeath(Character.Character character)
-        {
-            if (_characters.Contains(character))
-                _characters.Remove(character);
         }
     }
 }

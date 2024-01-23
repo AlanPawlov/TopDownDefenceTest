@@ -52,7 +52,7 @@ MonoBehaviour:
   - {fileID: -6115374863148999407}
   - {fileID: -2401534323052988666}
   _installerPrefabs: []
-  _parentNewObjectsUnderContext: 0
+  _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
   _buildsReflectionBakingCoverageMode: 0
   _settings:
@@ -81,6 +81,7 @@ MonoBehaviour:
   _globalCanvas: {fileID: 8446445449185705397, guid: 33084da8ede7ecc4587c5f1ea628c1cb, type: 3}
   _projectBootstrap: {fileID: 3380421696120516226}
   _globalSettings: {fileID: 11400000, guid: bc2a1d94df765f74fabcb448791aeffb, type: 2}
+  _isMobileInput: 0
 --- !u!114 &3380421696120516226
 MonoBehaviour:
   m_ObjectHideFlags: 0

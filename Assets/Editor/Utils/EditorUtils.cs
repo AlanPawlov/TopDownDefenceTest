@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Common.Data;
-using Common.Utils;
+using CommonTemplate.Data;
+using CommonTemplate.Utils;
 using Game.Models;
 using Newtonsoft.Json;
 using UnityEditor;

@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Common.Resource;
+using CommonTemplate.Resource;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Game.Environment
 {
-    public class LevelBorderHelper
+    public class LevelBorderHelper : IDisposable
     {
-        private readonly IResourceLoader _resourceLoader;
+        private IResourceLoader _resourceLoader;
         private List<GameObject> _borders;
         private GameObject _prefab;
 
@@ -48,6 +50,14 @@ namespace Game.Environment
             _borders.Add(rightBorder.gameObject);
             _borders.Add(topBorder.gameObject);
             _borders.Add(bottomBorder.gameObject);
+        }
+
+        public void Dispose()
+        {
+            _resourceLoader = null;
+            _prefab = null;
+            _borders.Clear();
+            _borders = null;
         }
     }
 }

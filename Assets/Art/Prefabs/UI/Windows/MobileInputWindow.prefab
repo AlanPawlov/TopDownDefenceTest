@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 262233038776624451}
   - component: {fileID: 5436136001328044491}
   - component: {fileID: 3746915882714062821}
-  - component: {fileID: 8288267252433573901}
   m_Layer: 5
   m_Name: Thumb
   m_TagString: Untagged
@@ -77,23 +76,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8288267252433573901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4987529814069445056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1428c5de340341e78748abbf4e2c1a3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _thumbTransform: {fileID: 0}
-  _joystickTransform: {fileID: 0}
-  _valueMultiplier: 1
-  _movementAreaRadius: 75
-  _dragHelper: {fileID: 0}
 --- !u!1 &6375938485857570414
 GameObject:
   m_ObjectHideFlags: 0

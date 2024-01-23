@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Common.States.GameStates;
-using Common.UITemplate;
-using Common.UITemplate.DefaultWidgets;
+using CommonTemplate.States.GameStates;
+using CommonTemplate.UITemplate;
+using CommonTemplate.UITemplate.DefaultWidgets;
 using UnityEngine;
 using Zenject;
 

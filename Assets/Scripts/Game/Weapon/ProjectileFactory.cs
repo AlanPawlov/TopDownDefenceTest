@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Common.Data;
-using Common.Factory;
-using Common.Resource;
+using CommonTemplate.Data;
+using CommonTemplate.Factory;
+using CommonTemplate.Resource;
 using Game.Models;
 using UnityEngine;
 using Zenject;

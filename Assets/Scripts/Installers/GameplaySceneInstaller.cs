@@ -1,5 +1,5 @@
-using Common.Services;
-using Common.States;
+using CommonTemplate.Services;
+using CommonTemplate.States;
 using Game.Character;
 using Game.Environment;
 using Game.SceneStates;

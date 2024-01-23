@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Common.Events;
-using Common.Events.Handlers;
+using CommonTemplate.Events;
+using CommonTemplate.Events.Handlers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

@@ -1,7 +1,7 @@
 using System.Linq;
-using Common.Data;
-using Common.Events;
-using Common.Events.Handlers;
+using CommonTemplate.Data;
+using CommonTemplate.Events;
+using CommonTemplate.Events.Handlers;
 using Game.Character;
 using UnityEngine;
 using Zenject;

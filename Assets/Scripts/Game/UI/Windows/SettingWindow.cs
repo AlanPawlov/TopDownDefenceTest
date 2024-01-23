@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Common.GameSetting;
-using Common.UITemplate;
-using Common.UITemplate.DefaultWidgets;
+using CommonTemplate.GameSetting;
+using CommonTemplate.UITemplate;
+using CommonTemplate.UITemplate.DefaultWidgets;
 using UnityEngine;
 using Zenject;
 

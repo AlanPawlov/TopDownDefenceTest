@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using Common.Events;
-using Common.Events.Handlers;
-using Common.Pool;
+using CommonTemplate.Events;
+using CommonTemplate.Events.Handlers;
+using CommonTemplate.Pool;
 using Game.Character;
 using UnityEngine;
 

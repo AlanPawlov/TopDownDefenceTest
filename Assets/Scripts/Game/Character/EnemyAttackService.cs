@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Common;
-using Common.Events;
-using Common.Events.Handlers;
+using CommonTemplate;
+using CommonTemplate.Events;
+using CommonTemplate.Events.Handlers;
 using Game.Environment;
 using UnityEngine;
 
@@ -41,8 +41,7 @@ namespace Game.Character
                     _enemies[i].Attack(_target);
             }
         }
-
-
+        
         private void Register(IAttackable movable)
         {
             _enemies.Add(movable);

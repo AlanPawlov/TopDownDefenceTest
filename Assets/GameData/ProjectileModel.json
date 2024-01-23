@@ -1,6 +1,6 @@
 [
   {
-    "ResourcePath": "Assets/Prefabs/Bullet.prefab",
+    "ResourcePath": "Assets/Art/Prefabs/Bullet.prefab",
     "BulletSpeed": 10.0,
     "Id": "TestProjectile"
   }

@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Common.States;
-using Common.States.GameStates;
+using CommonTemplate.States;
+using CommonTemplate.States.GameStates;
+using UnityEngine;
 
 namespace Game.SceneStates
 {
@@ -29,6 +30,7 @@ namespace Game.SceneStates
                 var target = state.Value as BaseSceneState;
                 target?.Dispose();
             }
+            Debug.Log($"{this} Disposed");
         }
     }
 }

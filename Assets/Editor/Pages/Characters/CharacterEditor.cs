@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using Common.Data;
-using Common.Utils;
+using CommonTemplate.Data;
+using CommonTemplate.Utils;
 using Editor.Common;
 using Editor.Utils;
 using Game.Models;

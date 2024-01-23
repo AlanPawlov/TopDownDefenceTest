@@ -1,9 +1,8 @@
 using System;
-using Common;
-using Common.Events;
-using Common.Events.Handlers;
+using CommonTemplate;
+using CommonTemplate.Events;
+using CommonTemplate.Events.Handlers;
 using Game.Input;
-using Game.Input.Mobile;
 using UnityEngine;
 
 namespace Game.Character
