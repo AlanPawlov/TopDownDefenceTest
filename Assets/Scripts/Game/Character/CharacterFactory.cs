@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Common.Data;
-using Common.Factory;
-using Common.Resource;
-using Common.Utils;
+using CommonTemplate.Data;
+using CommonTemplate.Factory;
+using CommonTemplate.Resource;
+using CommonTemplate.Utils;
 using Game.Models;
 using Game.Weapon;
 using UnityEngine;

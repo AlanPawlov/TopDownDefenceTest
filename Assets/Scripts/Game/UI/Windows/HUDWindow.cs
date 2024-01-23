@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Common.Events;
-using Common.Events.Handlers;
-using Common.UITemplate;
-using Common.UITemplate.DefaultWidgets;
+using CommonTemplate.Events;
+using CommonTemplate.Events.Handlers;
+using CommonTemplate.UITemplate;
+using CommonTemplate.UITemplate.DefaultWidgets;
 using UnityEngine;
 
 namespace Game.UI.Windows

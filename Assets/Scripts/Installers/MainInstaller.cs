@@ -1,13 +1,14 @@
-﻿using Common;
-using Common.Data;
-using Common.GameSetting;
-using Common.Resource;
-using Common.Services;
-using Common.States;
-using Common.States.GameStates;
-using Common.UITemplate;
-using Common.WebRequest;
+﻿using CommonTemplate;
+using CommonTemplate.Data;
+using CommonTemplate.GameSetting;
+using CommonTemplate.Resource;
+using CommonTemplate.Services;
+using CommonTemplate.States;
+using CommonTemplate.States.GameStates;
+using CommonTemplate.UITemplate;
+using CommonTemplate.WebRequest;
 using Game.Input.Mobile;
+using Game.Input.PC;
 using UnityEngine;
 using Zenject;
 
@@ -19,6 +20,7 @@ namespace Installers
         [SerializeField] private MainCanvas _globalCanvas;
         [SerializeField] private ProjectBootstrap _projectBootstrap;
         [SerializeField] private GlobalSettings _globalSettings;
+        [SerializeField] private bool _isMobileInput = false;
         private GameData _gameData;
 
         public override void InstallBindings()
@@ -204,9 +206,18 @@ namespace Installers
 
         private void RegisterInput()
         {
-            Container
-                .BindInterfacesAndSelfTo<MobileInputService>()
-                .AsSingle();
+            if (_isMobileInput)
+            {
+                Container
+                    .BindInterfacesAndSelfTo<MobileInputService>()
+                    .AsSingle();
+            }
+            else
+            {
+                Container
+                    .BindInterfacesAndSelfTo<PCInputService>()
+                    .AsSingle();
+            }
         }
     }
 }

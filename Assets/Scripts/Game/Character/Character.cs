@@ -1,18 +1,19 @@
 using System.Threading.Tasks;
-using Common;
-using Common.Events;
-using Common.Events.Handlers;
-using Common.Resource;
-using Common.Utils;
+using CommonTemplate;
+using CommonTemplate.Events;
+using CommonTemplate.Events.Handlers;
+using CommonTemplate.Resource;
+using CommonTemplate.Utils;
 using Game.Models;
 using Game.Weapon;
 using UnityEngine;
 using Zenject;
+using IPoolable = CommonTemplate.Pool.IPoolable;
 using Random = UnityEngine.Random;
 
 namespace Game.Character
 {
-    public class Character : MonoBehaviour, IDamageable, IMovable, IAttackable, Common.Pool.IPoolable
+    public class Character : MonoBehaviour, IDamageable, IMovable, IAttackable, IPoolable
     {
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private SpriteRenderer _renderer;

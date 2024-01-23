@@ -1,4 +1,4 @@
-﻿using Common.Utils;
+﻿using CommonTemplate.Utils;
 using Game.Character;
 using Game.Models;
 using UnityEngine;

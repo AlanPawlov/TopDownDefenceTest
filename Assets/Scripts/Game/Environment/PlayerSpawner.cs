@@ -1,14 +1,15 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Common.Data;
-using Common.Events;
-using Common.Events.Handlers;
+using CommonTemplate.Data;
+using CommonTemplate.Events;
+using CommonTemplate.Events.Handlers;
 using Game.Character;
 using UnityEngine;
 
 namespace Game.Environment
 {
-    public class PlayerSpawner
+    public class PlayerSpawner : IDisposable
     {
         private CharacterFactory _factory;
         private PlayerSpawnPoint _playerSpawnPoint;
@@ -41,6 +42,10 @@ namespace Game.Environment
         public void Kill()
         {
             _player.Death();
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

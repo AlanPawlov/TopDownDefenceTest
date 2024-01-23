@@ -1,5 +1,5 @@
 using System;
-using Common.States;
+using CommonTemplate.States;
 
 namespace Game.SceneStates
 {

@@ -4,8 +4,8 @@
     "PalyerCharacterId": "Player",
     "EnemySpawnerId": "TestSpawner",
     "WallId": "DefaultWall",
-    "MinKillToWin": 10,
-    "MaxKillToWin": 30,
+    "MinKillToWin": 5,
+    "MaxKillToWin": 10,
     "Id": "DefaultRules"
   }
 ]

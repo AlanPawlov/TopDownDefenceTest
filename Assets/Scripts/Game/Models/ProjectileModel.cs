@@ -1,5 +1,5 @@
 using System;
-using Common.Data;
+using CommonTemplate.Data;
 
 namespace Game.Models
 {

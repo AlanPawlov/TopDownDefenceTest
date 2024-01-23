@@ -4,9 +4,9 @@
     "MaxSpeed": 8.0,
     "MinSpeed": 5.0,
     "WeaponId": "ProjectileWeapon",
-    "CharacterPath": "Assets/Prefabs/Player.prefab",
-    "CharacterView": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/!$Goken.png",
-    "AnimatorController": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/Goken.overrideController",
+    "CharacterPath": "Assets/Art/Prefabs/Player.prefab",
+    "CharacterView": "Assets/Art/2d/Aekashics Librarium - Megapack III/Map Sprites/!$Goken.png",
+    "AnimatorController": "Assets/Art/2d/Aekashics Librarium - Megapack III/Map Sprites/Goken.overrideController",
     "Id": "Player"
   },
   {
@@ -14,9 +14,9 @@
     "MaxSpeed": 1.0,
     "MinSpeed": 3.0,
     "WeaponId": "Melee",
-    "CharacterPath": "Assets/Prefabs/Player.prefab",
-    "CharacterView": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/!$Skor.png",
-    "AnimatorController": "Assets/Art/Aekashics Librarium - Megapack III/Map Sprites/Skor.overrideController",
+    "CharacterPath": "Assets/Art/Prefabs/Player.prefab",
+    "CharacterView": "Assets/Art/2d/Aekashics Librarium - Megapack III/Map Sprites/!$Skor.png",
+    "AnimatorController": "Assets/Art/2d/Aekashics Librarium - Megapack III/Map Sprites/Skor.overrideController",
     "Id": "Enemy"
   }
 ]

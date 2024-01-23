@@ -1,6 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Common.States;
+using CommonTemplate.States;
 using Game.Environment;
 
 namespace Game.SceneStates
@@ -38,6 +38,8 @@ namespace Game.SceneStates
             base.Dispose();
             _tokenSource.Cancel();
             _tokenSource = null;
+            _playerSpawner.Dispose();
+            _levelBorderHelper.Dispose();
         }
     }
 }

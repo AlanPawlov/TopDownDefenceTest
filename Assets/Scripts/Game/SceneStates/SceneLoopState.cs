@@ -1,9 +1,9 @@
 using System.Linq;
-using Common.Data;
-using Common.Events;
-using Common.Events.Handlers;
-using Common.States;
-using Common.UITemplate;
+using CommonTemplate.Data;
+using CommonTemplate.Events;
+using CommonTemplate.Events.Handlers;
+using CommonTemplate.States;
+using CommonTemplate.UITemplate;
 using Game.Character;
 using Game.Environment;
 using Game.UI.Windows;
@@ -76,6 +76,12 @@ namespace Game.SceneStates
                     WindowBehavior.Exclusive);
             endGameWindow.SetData(isWin);
             StateMachine.StartState<EndSceneState>();
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            _playerMovementService.Dispose();
         }
     }
 }

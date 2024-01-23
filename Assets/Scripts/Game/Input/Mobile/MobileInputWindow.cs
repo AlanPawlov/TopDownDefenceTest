@@ -1,4 +1,4 @@
-﻿using Common.UITemplate;
+﻿using CommonTemplate.UITemplate;
 using UnityEngine;
 using Zenject;
 

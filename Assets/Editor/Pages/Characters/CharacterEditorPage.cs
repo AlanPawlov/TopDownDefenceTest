@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Common.Data;
+using CommonTemplate.Data;
 using Editor.Common;
 using Editor.Utils;
 using Game.Models;

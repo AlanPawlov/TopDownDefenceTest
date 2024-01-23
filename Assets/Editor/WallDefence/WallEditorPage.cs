@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Common.Data;
+using CommonTemplate.Data;
 using Editor.Common;
 using Game.Models;
 
