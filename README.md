@@ -1,33 +1,25 @@
 <h2>Настройки</h2>
 
-<h3>Диапазон количества врагов, которых следует уничтожить для победы указывается здесь:</h3>
-
-![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/EnemySpawnCount.jpg)
-
 <h3>Таймаут с которым враги появляются здесь:</h3>
 
-![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/EnemySpawnTimeout.jpg)
+![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/EnemySpawner.jpg)
 
-<h3>Скорость движения врагов здесь:</h3>
+<h3>Здоровье стены, по окончанию которого наступает поражение :</h3>
 
-![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/EnemyMovement.jpg)
+![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/Wall.jpg)
 
-<h3>Количество здоровья врагов здесь:</h3>
+<h3>Настройки персонажей:</h3>
 
-![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/EnemyHealth.jpg)
+![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/Characers.jpg)
 
-<h3>Радиус стрельбы персонажа здесь:</h3>
+<h3>Настройки проджектайлов для оружия дальнего боя здесь:</h3>
 
-![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/PlayerRange.jpg)
+![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/Projectiles.jpg)
 
-<h3>Скорость стрельбы персонажа здесь:</h3>
+<h3>Настройки оружия здесь:</h3>
 
-![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/FireRate.jpg)
+![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/Weapon.jpg)
 
-<h3>Урон от выстрела персонажа здесь:</h3>
+<h3>Общие правила игры:</h3>
 
-![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/PlayerDamage.jpg)
-
-<h3>Скорость пули здесь:</h3>
-
-![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/BulletSpeed.jpg)
+![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/GameRules.jpg)

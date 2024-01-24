@@ -26,7 +26,7 @@ namespace Editor.WallDefence
         }
 
         [ShowInInspector]
-        public int MaxSpawnTimeout
+        public int WallHealth
         {
             get => Model.Health;
             set => Model.Health = value;

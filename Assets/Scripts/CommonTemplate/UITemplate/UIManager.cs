@@ -179,14 +179,14 @@ namespace CommonTemplate.UITemplate
             }
         }
 
-        public void Dispose()
-        {
-            UninitAll();
-        }
-
         public void RemoveToPool(BaseUIElement element)
         {
             _uiPool.RemoveToPool(element);
+        }
+
+        public void Dispose()
+        {
+            UninitAll();
         }
     }
 }
