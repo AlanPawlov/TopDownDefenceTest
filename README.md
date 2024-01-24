@@ -1,5 +1,9 @@
 <h2>Настройки</h2>
 
+<h3>Открывается редактор конфигов через "GDEditorWindow/Main", либо через клавиши CTR+Shift+T:</h3>
+
+![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/OpenEditor.jpg)
+
 <h3>Таймаут с которым враги появляются здесь:</h3>
 
 ![alt-text](https://github.com/AlanPawlov/TopDownDefenceTest/blob/master/Screenshots/EnemySpawner.jpg)
